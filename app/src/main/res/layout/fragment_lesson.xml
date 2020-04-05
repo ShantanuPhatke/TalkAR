@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:padding="20dp"
+            android:background="@color/colorPrimary">
+
+            <ImageView
+                android:id="@+id/screen_icon"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_school_black_24dp"
+                android:layout_centerVertical="true"
+                android:tint="#fff"/>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lessons"
+                android:layout_toRightOf="@+id/screen_icon"
+                android:layout_centerVertical="true"
+                android:textSize="35sp"
+                android:textAllCaps="true"
+                android:fontFamily="sans-serif-black"
+                android:includeFontPadding="false"
+                android:layout_marginStart="20dp"
+                android:textColor="#fff"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_marginTop="-80dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnAlphabets"
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="8dp" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/alphabet_icon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_font_download_black_24dp"
+                        android:tint="#fff"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+                    <TextView
+                        android:id="@+id/alphabet_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alphabets"
+                        android:includeFontPadding="false"
+                        android:textSize="25sp"
+                        android:fontFamily="sans-serif-black"
+                        android:textColor="#fff"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/alphabet_icon"
+                        android:layout_marginBottom="10dp"/>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnNumbers"
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="8dp" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_gravity="center" >
+
+                    <ImageView
+                        android:id="@+id/number_icon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_looks_one_black_24dp"
+                        android:tint="#fff"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+                    <TextView
+                        android:id="@+id/number_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Numbers"
+                        android:includeFontPadding="false"
+                        android:textSize="25sp"
+                        android:fontFamily="sans-serif-black"
+                        android:layout_centerInParent="true"
+                        android:textColor="#fff"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/number_icon"
+                        android:layout_marginBottom="10dp" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_marginTop="-25dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnShapes"
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="8dp" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/shape_icon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_layers_black_24dp"
+                        android:tint="#fff"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+                    <TextView
+                        android:id="@+id/shape_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shapes"
+                        android:includeFontPadding="false"
+                        android:textSize="25sp"
+                        android:fontFamily="sans-serif-black"
+                        android:textColor="#fff"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/shape_icon"
+                        android:layout_marginBottom="10dp"/>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnWords"
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="8dp" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/word_icon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_translate_black_24dp"
+                        android:tint="#fff"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+                    <TextView
+                        android:id="@+id/word_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Words"
+                        android:includeFontPadding="false"
+                        android:textSize="25sp"
+                        android:fontFamily="sans-serif-black"
+                        android:textColor="#fff"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/word_icon"
+                        android:layout_marginBottom="10dp"/>
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_marginTop="-25dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnSentences"
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="8dp" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_gravity="center" >
+
+                    <ImageView
+                        android:id="@+id/sentence_icon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_format_align_left_black_24dp"
+                        android:tint="#fff"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+                    <TextView
+                        android:id="@+id/sentence_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sentences"
+                        android:includeFontPadding="false"
+                        android:textSize="25sp"
+                        android:fontFamily="sans-serif-black"
+                        android:layout_centerInParent="true"
+                        android:textColor="#fff"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/sentence_icon"
+                        android:layout_marginBottom="10dp" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnQuiz"
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="8dp" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_gravity="center" >
+
+                    <ImageView
+                        android:id="@+id/quiz_icon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_import_contacts_black_24dp"
+                        android:tint="#fff"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+                    <TextView
+                        android:id="@+id/quiz_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Quiz"
+                        android:includeFontPadding="false"
+                        android:textSize="25sp"
+                        android:fontFamily="sans-serif-black"
+                        android:layout_centerInParent="true"
+                        android:textColor="#fff"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/quiz_icon"
+                        android:layout_marginBottom="10dp" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_marginTop="-25dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnDictionary"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardElevation="3dp"
+                app:cardCornerRadius="8dp" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_gravity="center">
+                    <TextView
+                        android:id="@+id/dictionary_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DICTIONARY"
+                        android:includeFontPadding="false"
+                        android:textSize="25sp"
+                        android:fontFamily="sans-serif-black"
+                        android:textColor="#fff"
+                        android:layout_centerHorizontal="true" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

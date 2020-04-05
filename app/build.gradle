@@ -1,0 +1,362 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.ar.sceneform.plugin'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.example.talkar"
+        minSdkVersion 28
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility '1.8'
+        targetCompatibility '1.8'
+    }
+
+    packagingOptions {
+        exclude 'project.properties'
+        exclude 'META-INF/INDEX.LIST'
+    }
+}
+
+
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.firebase:firebase-database:16.0.4'
+    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.15.0'
+    implementation 'com.google.ar.sceneform:animation:1.15.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.media2:media2:1.0.0-alpha04'
+    implementation('com.google.cloud:google-cloud-translate:1.12.0') {
+        exclude group: 'org.apache.httpcomponents'
+        exclude group: 'org.json', module: 'json'
+    }
+    annotationProcessor 'com.google.cloud:google-cloud-translate:1.12.0'
+    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
+}
+
+
+sceneform.asset('sampledata/alphabets/a.obj',
+        'default',
+        'sampledata/alphabets/a.sfa',
+        'src/main/assets/a')
+
+sceneform.asset('sampledata/alphabets/b.obj',
+        'default',
+        'sampledata/alphabets/b.sfa',
+        'src/main/assets/b')
+
+sceneform.asset('sampledata/alphabets/c.obj',
+        'default',
+        'sampledata/alphabets/c.sfa',
+        'src/main/assets/c')
+
+sceneform.asset('sampledata/alphabets/d.obj',
+        'default',
+        'sampledata/alphabets/d.sfa',
+        'src/main/assets/d')
+
+sceneform.asset('sampledata/alphabets/e.obj',
+        'default',
+        'sampledata/alphabets/e.sfa',
+        'src/main/assets/e')
+
+sceneform.asset('sampledata/alphabets/f.obj',
+        'default',
+        'sampledata/alphabets/f.sfa',
+        'src/main/assets/f')
+
+sceneform.asset('sampledata/alphabets/h.obj',
+        'default',
+        'sampledata/alphabets/h.sfa',
+        'src/main/assets/h')
+
+sceneform.asset('sampledata/alphabets/i.obj',
+        'default',
+        'sampledata/alphabets/i.sfa',
+        'src/main/assets/i')
+
+sceneform.asset('sampledata/alphabets/j.obj',
+        'default',
+        'sampledata/alphabets/j.sfa',
+        'src/main/assets/j')
+
+sceneform.asset('sampledata/alphabets/k.obj',
+        'default',
+        'sampledata/alphabets/k.sfa',
+        'src/main/assets/k')
+
+sceneform.asset('sampledata/alphabets/l.obj',
+        'default',
+        'sampledata/alphabets/l.sfa',
+        'src/main/assets/l')
+
+sceneform.asset('sampledata/alphabets/m.obj',
+        'default',
+        'sampledata/alphabets/m.sfa',
+        'src/main/assets/m')
+
+sceneform.asset('sampledata/alphabets/n.obj',
+        'default',
+        'sampledata/alphabets/n.sfa',
+        'src/main/assets/n')
+
+sceneform.asset('sampledata/alphabets/p.obj',
+        'default',
+        'sampledata/alphabets/p.sfa',
+        'src/main/assets/p')
+
+sceneform.asset('sampledata/alphabets/q.obj',
+        'default',
+        'sampledata/alphabets/q.sfa',
+        'src/main/assets/q')
+
+sceneform.asset('sampledata/alphabets/r.obj',
+        'default',
+        'sampledata/alphabets/r.sfa',
+        'src/main/assets/r')
+
+sceneform.asset('sampledata/alphabets/s.obj',
+        'default',
+        'sampledata/alphabets/s.sfa',
+        'src/main/assets/s')
+
+sceneform.asset('sampledata/alphabets/t.obj',
+        'default',
+        'sampledata/alphabets/t.sfa',
+        'src/main/assets/t')
+
+sceneform.asset('sampledata/alphabets/u.obj',
+        'default',
+        'sampledata/alphabets/u.sfa',
+        'src/main/assets/u')
+
+sceneform.asset('sampledata/alphabets/v.obj',
+        'default',
+        'sampledata/alphabets/v.sfa',
+        'src/main/assets/v')
+
+sceneform.asset('sampledata/alphabets/w.obj',
+        'default',
+        'sampledata/alphabets/w.sfa',
+        'src/main/assets/w')
+
+sceneform.asset('sampledata/alphabets/x.obj',
+        'default',
+        'sampledata/alphabets/x.sfa',
+        'src/main/assets/x')
+
+sceneform.asset('sampledata/alphabets/y.obj',
+        'default',
+        'sampledata/alphabets/y.sfa',
+        'src/main/assets/y')
+
+sceneform.asset('sampledata/alphabets/z.obj',
+        'default',
+        'sampledata/alphabets/z.sfa',
+        'src/main/assets/z')
+
+sceneform.asset('sampledata/numbers/0.obj',
+        'default',
+        'sampledata/numbers/0.sfa',
+        'src/main/assets/0')
+
+sceneform.asset('sampledata/numbers/1.obj',
+        'default',
+        'sampledata/numbers/1.sfa',
+        'src/main/assets/1')
+
+sceneform.asset('sampledata/numbers/2.obj',
+        'default',
+        'sampledata/numbers/2.sfa',
+        'src/main/assets/2')
+
+sceneform.asset('sampledata/numbers/3.obj',
+        'default',
+        'sampledata/numbers/3.sfa',
+        'src/main/assets/3')
+
+sceneform.asset('sampledata/numbers/4.obj',
+        'default',
+        'sampledata/numbers/4.sfa',
+        'src/main/assets/4')
+
+sceneform.asset('sampledata/numbers/5.obj',
+        'default',
+        'sampledata/numbers/5.sfa',
+        'src/main/assets/5')
+
+sceneform.asset('sampledata/numbers/6.obj',
+        'default',
+        'sampledata/numbers/6.sfa',
+        'src/main/assets/6')
+
+sceneform.asset('sampledata/numbers/7.obj',
+        'default',
+        'sampledata/numbers/7.sfa',
+        'src/main/assets/7')
+
+sceneform.asset('sampledata/numbers/8.obj',
+        'default',
+        'sampledata/numbers/8.sfa',
+        'src/main/assets/8')
+
+sceneform.asset('sampledata/numbers/9.obj',
+        'default',
+        'sampledata/numbers/9.sfa',
+        'src/main/assets/9')
+
+sceneform.asset('sampledata/numbers/10.obj',
+        'default',
+        'sampledata/numbers/10.sfa',
+        'src/main/assets/10')
+
+sceneform.asset('sampledata/numbers/11.obj',
+        'default',
+        'sampledata/numbers/11.sfa',
+        'src/main/assets/11')
+
+sceneform.asset('sampledata/numbers/12.obj',
+        'default',
+        'sampledata/numbers/12.sfa',
+        'src/main/assets/12')
+
+sceneform.asset('sampledata/numbers/20.obj',
+        'default',
+        'sampledata/numbers/20.sfa',
+        'src/main/assets/20')
+
+sceneform.asset('sampledata/numbers/30.obj',
+        'default',
+        'sampledata/numbers/30.sfa',
+        'src/main/assets/30')
+
+sceneform.asset('sampledata/numbers/40.obj',
+        'default',
+        'sampledata/numbers/40.sfa',
+        'src/main/assets/40')
+
+sceneform.asset('sampledata/numbers/50.obj',
+        'default',
+        'sampledata/numbers/50.sfa',
+        'src/main/assets/50')
+
+sceneform.asset('sampledata/numbers/60.obj',
+        'default',
+        'sampledata/numbers/60.sfa',
+        'src/main/assets/60')
+
+sceneform.asset('sampledata/numbers/70.obj',
+        'default',
+        'sampledata/numbers/70.sfa',
+        'src/main/assets/70')
+
+sceneform.asset('sampledata/numbers/80.obj',
+        'default',
+        'sampledata/numbers/80.sfa',
+        'src/main/assets/80')
+
+sceneform.asset('sampledata/numbers/90.obj',
+        'default',
+        'sampledata/numbers/90.sfa',
+        'src/main/assets/90')
+
+sceneform.asset('sampledata/numbers/100.obj',
+        'default',
+        'sampledata/numbers/100.sfa',
+        'src/main/assets/100')
+
+sceneform.asset('sampledata/shapes/circle.obj',
+        'default',
+        'sampledata/shapes/circle.sfa',
+        'src/main/assets/circle')
+
+sceneform.asset('sampledata/shapes/cone.obj',
+        'default',
+        'sampledata/shapes/cone.sfa',
+        'src/main/assets/cone')
+
+sceneform.asset('sampledata/shapes/cross.obj',
+        'default',
+        'sampledata/shapes/cross.sfa',
+        'src/main/assets/cross')
+
+sceneform.asset('sampledata/shapes/cylinder.obj',
+        'default',
+        'sampledata/shapes/cylinder.sfa',
+        'src/main/assets/cylinder')
+
+sceneform.asset('sampledata/shapes/rectangle.obj',
+        'default',
+        'sampledata/shapes/rectangle.sfa',
+        'src/main/assets/rectangle')
+
+sceneform.asset('sampledata/shapes/square.obj',
+        'default',
+        'sampledata/shapes/square.sfa',
+        'src/main/assets/square')
+
+sceneform.asset('sampledata/words/rabbit.obj',
+        'default',
+        'sampledata/words/rabbit.sfa',
+        'src/main/assets/rabbit')
+
+sceneform.asset('sampledata/shapes/heart.obj',
+        'default',
+        'sampledata/shapes/heart.sfa',
+        'src/main/assets/heart')
+
+sceneform.asset('sampledata/shapes/star.obj',
+        'default',
+        'sampledata/shapes/star.sfa',
+        'src/main/assets/star')
+
+sceneform.asset('sampledata/shapes/traingle.obj',
+        'default',
+        'sampledata/shapes/traingle.sfa',
+        'src/main/assets/traingle')
+
+sceneform.asset('sampledata/words/airplane.obj',
+        'default',
+        'sampledata/words/airplane.sfa',
+        'src/main/assets/airplane')
+
+sceneform.asset('sampledata/words/axe.obj',
+        'default',
+        'sampledata/words/axe.sfa',
+        'src/main/assets/axe')
+
+sceneform.asset('sampledata/words/banana.obj',
+        'default',
+        'sampledata/words/banana.sfa',
+        'src/main/assets/banana')
+
+sceneform.asset('sampledata/words/bed.obj',
+        'default',
+        'sampledata/words/bed.sfa',
+        'src/main/assets/bed')
+
+sceneform.asset('sampledata/words/bird.obj',
+        'default',
+        'sampledata/words/bird.sfa',
+        'src/main/assets/bird')

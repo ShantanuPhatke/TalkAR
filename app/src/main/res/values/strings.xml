@@ -1,0 +1,454 @@
+<resources>
+    <string name="app_name">TalkAR</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="no_connection">No internet connection! Cannot be translated!</string>
+
+
+    <string-array name="modelAlphabet_array">
+        <item>a</item>
+        <item>b</item>
+        <item>c</item>
+        <item>d</item>
+        <item>e</item>
+        <item>f</item>
+        <item>g</item>
+        <item>h</item>
+        <item>i</item>
+        <item>j</item>
+        <item>k</item>
+        <item>l</item>
+        <item>m</item>
+        <item>n</item>
+        <item>o</item>
+        <item>p</item>
+        <item>q</item>
+        <item>r</item>
+        <item>s</item>
+        <item>t</item>
+        <item>u</item>
+        <item>v</item>
+        <item>w</item>
+        <item>x</item>
+        <item>y</item>
+        <item>z</item>
+    </string-array>
+
+    <string-array name="answerAlphabet_0">
+        <item>a</item>
+        <item>ah</item>
+        <item>ae</item>
+        <item>aa</item>
+    </string-array>
+    <string-array name="answerAlphabet_1">
+        <item>b</item>
+        <item>be</item>
+        <item>bi</item>
+        <item>wie</item>
+    </string-array>
+    <string-array name="answerAlphabet_2">
+        <item>c</item>
+        <item>see</item>
+        <item>ce</item>
+        <item>sie</item>
+        <item>wie</item>
+    </string-array>
+    <string-array name="answerAlphabet_3">
+        <item>d</item>
+        <item>de</item>
+        <item>the</item>
+        <item>die</item>
+        <item>di</item>
+    </string-array>
+    <string-array name="answerAlphabet_4">
+        <item>e</item>
+        <item>ye</item>
+        <item>ee</item>
+        <item>ey</item>
+        <item>ich</item>
+    </string-array>
+    <string-array name="answerAlphabet_5">
+        <item>f</item>
+        <item>af</item>
+    </string-array>
+    <string-array name="answerAlphabet_6">
+        <item>g</item>
+    </string-array>
+    <string-array name="answerAlphabet_7">
+        <item>h</item>
+    </string-array>
+    <string-array name="answerAlphabet_8">
+        <item>i</item>
+    </string-array>
+    <string-array name="answerAlphabet_9">
+        <item>j</item>
+    </string-array>
+    <string-array name="answerAlphabet_10">
+        <item>k</item>
+    </string-array>
+    <string-array name="answerAlphabet_11">
+        <item>l</item>
+    </string-array>
+    <string-array name="answerAlphabet_12">
+        <item>m</item>
+    </string-array>
+    <string-array name="answerAlphabet_13">
+        <item>n</item>
+    </string-array>
+    <string-array name="answerAlphabet_14">
+        <item>o</item>
+    </string-array>
+    <string-array name="answerAlphabet_15">
+        <item>p</item>
+    </string-array>
+    <string-array name="answerAlphabet_16">
+        <item>q</item>
+    </string-array>
+    <string-array name="answerAlphabet_17">
+        <item>r</item>
+    </string-array>
+    <string-array name="answerAlphabet_18">
+        <item>s</item>
+    </string-array>
+    <string-array name="answerAlphabet_19">
+        <item>t</item>
+    </string-array>
+    <string-array name="answerAlphabet_20">
+        <item>u</item>
+    </string-array>
+    <string-array name="answerAlphabet_21">
+        <item>v</item>
+    </string-array>
+    <string-array name="answerAlphabet_22">
+        <item>w</item>
+    </string-array>
+    <string-array name="answerAlphabet_23">
+        <item>x</item>
+    </string-array>
+    <string-array name="answerAlphabet_24">
+        <item>y</item>
+    </string-array>
+    <string-array name="answerAlphabet_25">
+        <item>z</item>
+    </string-array>
+
+
+    <string-array name="modelNumber_array">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>20</item>
+        <item>30</item>
+        <item>40</item>
+        <item>50</item>
+        <item>60</item>
+        <item>70</item>
+        <item>80</item>
+        <item>90</item>
+        <item>100</item>
+    </string-array>
+
+    <string-array name="answerNumber_0">
+        <item>0</item>
+        <item>null</item>
+    </string-array>
+    <string-array name="answerNumber_1">
+        <item>1</item>
+        <item>eins</item>
+        <item>ein</item>
+    </string-array>
+    <string-array name="answerNumber_2">
+        <item>2</item>
+        <item>zwei</item>
+        <item>zwee</item>
+    </string-array>
+    <string-array name="answerNumber_3">
+        <item>3</item>
+        <item>drei</item>
+    </string-array>
+    <string-array name="answerNumber_4">
+        <item>4</item>
+        <item>vier</item>
+    </string-array>
+    <string-array name="answerNumber_5">
+        <item>5</item>
+        <item>funf</item>
+        <item>fünf</item>
+    </string-array>
+    <string-array name="answerNumber_6">
+        <item>6</item>
+        <item>sechs</item>
+    </string-array>
+    <string-array name="answerNumber_7">
+        <item>7</item>
+        <item>sieben</item>
+    </string-array>
+    <string-array name="answerNumber_8">
+        <item>8</item>
+        <item>acht</item>
+    </string-array>
+    <string-array name="answerNumber_9">
+        <item>9</item>
+        <item>neun</item>
+    </string-array>
+    <string-array name="answerNumber_10">
+        <item>10</item>
+        <item>zehn</item>
+    </string-array>
+    <string-array name="answerNumber_11">
+        <item>11</item>
+        <item>elf</item>
+    </string-array>
+    <string-array name="answerNumber_12">
+        <item>12</item>
+        <item>zwölf</item>
+        <item>zwolf</item>
+    </string-array>
+    <string-array name="answerNumber_13">
+        <item>20</item>
+        <item>zwanzig</item>
+    </string-array>
+    <string-array name="answerNumber_14">
+        <item>30</item>
+        <item>dreißig</item>
+        <item>dreissig</item>
+        <item>dreizig</item>
+    </string-array>
+    <string-array name="answerNumber_15">
+        <item>40</item>
+        <item>vierzig</item>
+    </string-array>
+    <string-array name="answerNumber_16">
+        <item>50</item>
+        <item>fünfzig</item>
+        <item>funfzig</item>
+    </string-array>
+    <string-array name="answerNumber_17">
+        <item>60</item>
+        <item>sechzig</item>
+    </string-array>
+    <string-array name="answerNumber_18">
+        <item>70</item>
+        <item>siebzig</item>
+    </string-array>
+    <string-array name="answerNumber_19">
+        <item>80</item>
+        <item>achtzig</item>
+    </string-array>
+    <string-array name="answerNumber_20">
+        <item>90</item>
+        <item>neunzig</item>
+    </string-array>
+    <string-array name="answerNumber_21">
+        <item>100</item>
+        <item>einhundert</item>
+    </string-array>
+
+
+    <string-array name="modelShape_array">
+        <item>circle</item>
+        <item>square</item>
+        <item>triangle</item>
+        <item>rectangle</item>
+        <item>cone</item>
+        <item>cylinder</item>
+        <item>cross</item>
+        <item>heart</item>
+        <item>star</item>
+    </string-array>
+
+    <string-array name="shape_array">
+        <item>kreis</item>
+        <item>quadrat</item>
+        <item>dreieck</item>
+        <item>rechteck</item>
+        <item>kegel</item>
+        <item>zylinder</item>
+        <item>kreuz</item>
+        <item>herz</item>
+        <item>stern</item>
+    </string-array>
+
+    <string-array name="answerShape_0">
+        <item>circle</item>
+        <item>kreis</item>
+    </string-array>
+    <string-array name="answerShape_1">
+        <item>square</item>
+        <item>quadrat</item>
+    </string-array>
+    <string-array name="answerShape_2">
+        <item>triangle</item>
+        <item>dreieck</item>
+        <item>driehoek</item>
+    </string-array>
+    <string-array name="answerShape_3">
+        <item>rectangle</item>
+        <item>rechteck</item>
+    </string-array>
+    <string-array name="answerShape_4">
+        <item>cone</item>
+        <item>kegel</item>
+    </string-array>
+    <string-array name="answerShape_5">
+        <item>cylinder</item>
+        <item>zylinder</item>
+    </string-array>
+    <string-array name="answerShape_6">
+        <item>cross</item>
+        <item>kreuz</item>
+    </string-array>
+    <string-array name="answerShape_7">
+        <item>heart</item>
+        <item>herz</item>
+    </string-array>
+    <string-array name="answerShape_8">
+        <item>star</item>
+        <item>stern</item>
+    </string-array>
+
+
+
+    <string-array name="modelWord_array">
+        <item>airplane</item>
+        <item>axe</item>
+        <item>banana</item>
+        <item>bed</item>
+        <item>bird</item>
+        <item>book</item>
+        <item>bottle</item>
+        <item>car</item>
+        <item>cup</item>
+        <item>cupcake</item>
+        <item>donut</item>
+        <item>earth</item>
+        <item>flamingo</item>
+        <item>frame</item>
+        <item>grass</item>
+        <item>guitar</item>
+        <item>hammer</item>
+        <item>hat</item>
+        <item>ice_cream</item>
+        <item>igloo</item>
+        <item>iron</item>
+        <item>jar</item>
+        <item>kettle</item>
+        <item>key</item>
+        <item>knife</item>
+        <item>ladder</item>
+        <item>lamp</item>
+        <item>leaf</item>
+        <item>lotus</item>
+        <item>mask</item>
+        <item>microwave</item>
+        <item>padlock</item>
+        <item>pill</item>
+        <item>pineapple</item>
+        <item>plate</item>
+        <item>rabbit</item>
+        <item>yak</item>
+        <item>yarn</item>
+    </string-array>
+
+    <string-array name="word_array">
+        <item>flugzeug</item>
+        <item>axt</item>
+        <item>banane</item>
+        <item>bett</item>
+        <item>vogel</item>
+    </string-array>
+
+    <string-array name="answerWord_0">
+        <item>flugzeug</item>
+    </string-array>
+    <string-array name="answerWord_1">
+        <item>axt</item>
+    </string-array>
+    <string-array name="answerWord_2">
+        <item>banane</item>
+    </string-array>
+    <string-array name="answerWord_3">
+        <item>bett</item>
+    </string-array>
+    <string-array name="answerWord_4">
+        <item>vogel</item>
+    </string-array>
+
+
+    <string-array name="modelSentence_array">
+        <item>apple</item>
+        <item>bottle</item>
+        <item>cupcake</item>
+        <item>egg</item>
+    </string-array>
+
+    <string-array name="sentence_array">
+        <item>grüne Äpfel sind sauer</item>
+        <item>Öffne die Flasche</item>
+        <item>Kinder mögen Cupcake</item>
+        <item>Ich mag Eier</item>
+    </string-array>
+
+    <string-array name="answerSentence_0">
+        <item>grüne äpfel sind sauer</item>
+        <item>grune apfel sind sauer</item>
+    </string-array>
+    <string-array name="answerSentence_1">
+        <item>öffne die flasche</item>
+        <item>offne die flasche</item>
+    </string-array>
+    <string-array name="answerSentence_2">
+        <item>kinder mögen cupcake</item>
+        <item>kinder mogen cupcake</item>
+        <item>kinder mugen cupcake</item>
+    </string-array>
+    <string-array name="answerSentence_3">
+        <item>ich mag eier</item>
+    </string-array>
+
+
+    <string-array name="modelQuiz_array">
+        <item>question01</item>
+        <item>question02</item>
+        <item>question03</item>
+        <item>question04</item>
+        <item>question05</item>
+    </string-array>
+
+    <string-array name="quiz_array">
+        <item>This is question01?</item>
+        <item>This is question02?</item>
+        <item>This is question03?</item>
+        <item>This is question04?</item>
+        <item>This is question05?</item>
+    </string-array>
+
+    <string-array name="answerQuiz_0">
+        <item>circle</item>
+    </string-array>
+    <string-array name="answerQuiz_1">
+        <item>circle</item>
+    </string-array>
+    <string-array name="answerQuiz_2">
+        <item>circle</item>
+    </string-array>
+    <string-array name="answerQuiz_3">
+        <item>circle</item>
+    </string-array>
+    <string-array name="answerQuiz_4">
+        <item>circle</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LessonSentences">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary" />
+
+    <RelativeLayout
+        android:id="@+id/textArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
+
+        <TextView
+            android:id="@+id/sentenceText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="Here goes the sentence"
+            android:textAlignment="center"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+    <fragment
+        android:id="@+id/arFragment"
+        android:name="com.google.ar.sceneform.ux.ArFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textArea" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/next"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_above="@+id/replay"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/ic_skip_next" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/replay"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_above="@+id/record"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/ic_replay" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/record"
+        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="40dp"
+        android:onClick="getSpeechInput"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/ic_mic_black_24dp" />
+
+</RelativeLayout>
