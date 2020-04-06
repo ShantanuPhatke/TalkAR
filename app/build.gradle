@@ -360,3 +360,23 @@ sceneform.asset('sampledata/words/bird.obj',
         'default',
         'sampledata/words/bird.sfa',
         'src/main/assets/bird')
+
+sceneform.asset('sampledata/sentences/apple.obj',
+        'default',
+        'sampledata/sentences/apple.sfa',
+        'src/main/assets/apple')
+
+sceneform.asset('sampledata/sentences/bottle.obj',
+        'default',
+        'sampledata/sentences/bottle.sfa',
+        'src/main/assets/bottle')
+
+sceneform.asset('sampledata/sentences/cupcake.obj',
+        'default',
+        'sampledata/sentences/cupcake.sfa',
+        'src/main/assets/cupcake')
+
+sceneform.asset('sampledata/sentences/egg.obj',
+        'default',
+        'sampledata/sentences/egg.sfa',
+        'src/main/assets/egg')
