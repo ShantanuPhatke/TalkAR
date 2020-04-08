@@ -3,11 +3,11 @@ package com.example.talkar;
 class LessonsHelperClass {
 
     String username;
-    int alphabets, numbers, shapes, colors, words, sentences, quiz;
+    int alphabets, numbers, shapes, colors, words, greetings, sentences, quiz;
 
 
 
-    public LessonsHelperClass(String username, int alphabets, int numbers, int shapes, int colors, int words, int sentences, int quiz) {
+    public LessonsHelperClass(String username, int alphabets, int numbers, int shapes, int colors, int words, int greetings, int sentences, int quiz) {
 
         this.username = username;
         this.alphabets = alphabets;
@@ -15,6 +15,7 @@ class LessonsHelperClass {
         this.shapes = shapes;
         this.colors = colors;
         this.words = words;
+        this.greetings = greetings;
         this.sentences = sentences;
         this.quiz = quiz;
     }
@@ -57,6 +58,13 @@ class LessonsHelperClass {
     }
     public void setWords(int words) {
         this.words = words;
+    }
+
+    public int getGreetings() {
+        return greetings;
+    }
+    public void setGreetings(int greetings) {
+        this.greetings = greetings;
     }
 
     public int getSentences() {

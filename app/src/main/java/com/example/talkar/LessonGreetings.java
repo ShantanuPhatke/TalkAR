@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.ar.core.Anchor;
@@ -28,19 +29,20 @@ import java.util.concurrent.TimeUnit;
 
 import android.speech.tts.TextToSpeech;
 
-public class LessonColors extends AppCompatActivity {
+public class LessonGreetings extends AppCompatActivity {
 
     public String userSpokenText = "";
     public String tutorSpokenText = "";
     private ArFragment arFragment;
     private TextToSpeech textToSpeech;
     Button replay, next;
-    int currentColorCount, colorsCompleted;
+    int currentGreetingCount, greetingCompleted;
     String currentModel;
-    String[] colorModels, currentColorOptions, color;
+    String[] greetingModels, currentGreetingOptions, greeting;
+    TextView greetingText;
 
     private static final String SHARED_PREFS = "sharedPrefs";
-    public static final String sp_lesson_color = "ColorsCompleted";
+    public static final String sp_lesson_greeting = "GreetingCompleted";
     private static final String sp_username = "Username";
 
     private String username;
@@ -51,23 +53,25 @@ public class LessonColors extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lesson_colors);
+        setContentView(R.layout.activity_lesson_greetings);
 
         reference = FirebaseDatabase.getInstance().getReference("lessons");
 
         SharedPreferences sharedPreferences = this.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        colorsCompleted = sharedPreferences.getInt(sp_lesson_color, 0);
+        greetingCompleted = sharedPreferences.getInt(sp_lesson_greeting, 0);
         username = sharedPreferences.getString(sp_username, "");
 
-        colorModels = getResources().getStringArray(R.array.modelColor_array);
-        color = getResources().getStringArray(R.array.color_array);
+        greetingModels = getResources().getStringArray(R.array.modelGreeting_array);
+        greeting = getResources().getStringArray(R.array.greeting_array);
 
-        initLesson(colorsCompleted);
+        greetingText = findViewById(R.id.greetingText);
+
+        initLesson(greetingCompleted);
 
         // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Colors");
+        getSupportActionBar().setTitle("Greetings");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -109,29 +113,30 @@ public class LessonColors extends AppCompatActivity {
 
     }
 
-    private void initLesson(int colorsCompleted) {
-        currentColorCount = colorsCompleted;
-        setCurrentColorOptions(currentColorCount);
-        currentModel = colorModels[colorsCompleted]+".sfb";
-        tutorSpokenText = color[colorsCompleted];
+    private void initLesson(int greetingsCompleted) {
+        currentGreetingCount = greetingsCompleted;
+        setCurrentGreetingOptions(currentGreetingCount);
+        currentModel = greetingModels[greetingsCompleted]+".sfb";
+        tutorSpokenText = greeting[greetingsCompleted];
+        greetingText.setText(greeting[greetingsCompleted]);
     }
 
-    private void setCurrentColorOptions(int currentColorCount) {
-        switch (currentColorCount){
+    private void setCurrentGreetingOptions(int currentGreetingCount) {
+        switch (currentGreetingCount){
             case 0:
-                currentColorOptions = getResources().getStringArray(R.array.answerColor_0);
+                currentGreetingOptions = getResources().getStringArray(R.array.answerGreeting_0);
                 break;
             case 1:
-                currentColorOptions = getResources().getStringArray(R.array.answerColor_1);
+                currentGreetingOptions = getResources().getStringArray(R.array.answerGreeting_1);
                 break;
             case 2:
-                currentColorOptions = getResources().getStringArray(R.array.answerColor_2);
+                currentGreetingOptions = getResources().getStringArray(R.array.answerGreeting_2);
                 break;
             case 3:
-                currentColorOptions = getResources().getStringArray(R.array.answerColor_3);
+                currentGreetingOptions = getResources().getStringArray(R.array.answerGreeting_3);
                 break;
             case 4:
-                currentColorOptions = getResources().getStringArray(R.array.answerColor_4);
+                currentGreetingOptions = getResources().getStringArray(R.array.answerGreeting_4);
                 break;
         }
     }
@@ -139,23 +144,25 @@ public class LessonColors extends AppCompatActivity {
 
     private void proceedLesson() {
         if (verifySpeech()){
-            if (currentColorCount != colorModels.length-1){
-                currentColorCount += 1;
-                setCurrentColorOptions(currentColorCount);
-                currentModel = colorModels[currentColorCount]+".sfb";
-                tutorSpokenText = color[currentColorCount];
+            if (currentGreetingCount != greetingModels.length-1){
+                currentGreetingCount += 1;
+                setCurrentGreetingOptions(currentGreetingCount);
+                currentModel = greetingModels[currentGreetingCount]+".sfb";
+                tutorSpokenText = greeting[currentGreetingCount];
                 textToSpeech.setLanguage(Locale.GERMAN);
 //                textToSpeech.setLanguage(new Locale("nl_NL"));
                 speak(tutorSpokenText);
-                updateSharedPrefs(currentColorCount);
-                updateDatabase(currentColorCount);
+                greetingText.setText(greeting[currentGreetingCount]);
+                updateSharedPrefs(currentGreetingCount);
+                updateDatabase(currentGreetingCount);
             }
             else {
-                updateSharedPrefs(currentColorCount +1);
-                updateDatabase(currentColorCount +1);
-                tutorSpokenText = "Congratulations on learning the German shapes!";
+                updateSharedPrefs(currentGreetingCount +1);
+                updateDatabase(currentGreetingCount +1);
+                tutorSpokenText = "Congratulations on learning the German sentences!";
                 textToSpeech.setLanguage(Locale.ENGLISH);
                 speak(tutorSpokenText);
+                greetingText.setText("Congratulations!!");
             }
         }
         else{
@@ -164,20 +171,20 @@ public class LessonColors extends AppCompatActivity {
         }
     }
 
-    private void updateDatabase(int currentColorCount) {
-        reference.child(username).child("colors").setValue(currentColorCount);
+    private void updateDatabase(int currentGreetingCount) {
+        reference.child(username).child("greetings").setValue(currentGreetingCount);
     }
 
-    private void updateSharedPrefs(int currentColorCount) {
+    private void updateSharedPrefs(int currentGreetingCount) {
         SharedPreferences sharedPreferences = this.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(sp_lesson_color, currentColorCount);
+        editor.putInt(sp_lesson_greeting, currentGreetingCount);
         editor.apply();
     }
 
     private boolean verifySpeech() {
         if (!userSpokenText.equals("")) {
-            if (Arrays.asList(currentColorOptions).contains(userSpokenText)){
+            if (Arrays.asList(currentGreetingOptions).contains(userSpokenText)){
                 textToSpeech.setLanguage(Locale.ENGLISH);
                 speak("Correct answer!");
                 try {
