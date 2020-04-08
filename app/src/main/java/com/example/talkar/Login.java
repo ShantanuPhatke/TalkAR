@@ -29,7 +29,7 @@ public class Login extends AppCompatActivity {
     ImageView image;
     TextView heading, subHeading;
     TextInputLayout username, password, email;
-    int alphabetsCompleted, numbersCompleted, shapesCompleted, wordsCompleted, sentencesCompleted, quizCompleted;
+    int alphabetsCompleted, numbersCompleted, shapesCompleted, colorsCompleted, wordsCompleted, sentencesCompleted, quizCompleted;
 
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String sp_fullName = "FullName";
@@ -41,6 +41,7 @@ public class Login extends AppCompatActivity {
     public static final String sp_lesson_alphabet = "AlphabetsCompleted";
     public static final String sp_lesson_number = "NumbersCompleted";
     public static final String sp_lesson_shape = "ShapesCompleted";
+    public static final String sp_lesson_color = "ColorsCompleted";
     public static final String sp_lesson_word = "WordsCompleted";
     public static final String sp_lesson_sentence = "SentencesCompleted";
     public static final String sp_lesson_quiz = "QuizCompleted";
@@ -198,11 +199,12 @@ public class Login extends AppCompatActivity {
                     alphabetsCompleted = dataSnapshot.child(username).child("alphabets").getValue(int.class);
                     numbersCompleted = dataSnapshot.child(username).child("numbers").getValue(int.class);
                     shapesCompleted = dataSnapshot.child(username).child("shapes").getValue(int.class);
+                    colorsCompleted = dataSnapshot.child(username).child("colors").getValue(int.class);
                     wordsCompleted = dataSnapshot.child(username).child("words").getValue(int.class);
                     sentencesCompleted = dataSnapshot.child(username).child("sentences").getValue(int.class);
                     quizCompleted = dataSnapshot.child(username).child("quiz").getValue(int.class);
 
-                    savedataLesson(alphabetsCompleted, numbersCompleted, shapesCompleted, wordsCompleted, sentencesCompleted, quizCompleted);
+                    savedataLesson(alphabetsCompleted, numbersCompleted, shapesCompleted, colorsCompleted, wordsCompleted, sentencesCompleted, quizCompleted);
                 }
             }
 
@@ -215,13 +217,14 @@ public class Login extends AppCompatActivity {
 
 
     // Stores lesson specific data in SharedPrefs
-    private void savedataLesson(int alphabetsCompleted, int numbersCompleted, int shapesCompleted, int wordsCompleted, int sentencesCompleted, int quizCompleted) {
+    private void savedataLesson(int alphabetsCompleted, int numbersCompleted, int shapesCompleted, int colorsCompleted, int wordsCompleted, int sentencesCompleted, int quizCompleted) {
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(sp_lesson_alphabet, alphabetsCompleted);
         editor.putInt(sp_lesson_number, numbersCompleted);
         editor.putInt(sp_lesson_shape, shapesCompleted);
+        editor.putInt(sp_lesson_color, colorsCompleted);
         editor.putInt(sp_lesson_word, wordsCompleted);
         editor.putInt(sp_lesson_sentence, sentencesCompleted);
         editor.putInt(sp_lesson_quiz, quizCompleted);

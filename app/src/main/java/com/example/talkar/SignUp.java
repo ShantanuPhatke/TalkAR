@@ -161,11 +161,12 @@ public class SignUp extends AppCompatActivity {
         int alphabets = 0;
         int numbers = 0;
         int shapes = 0;
+        int colors = 0;
         int words = 0;
         int sentences = 0;
         int quiz = 0;
         // Initializing all lesson values as zero in the database
-        LessonsHelperClass lessonsHelperClass = new LessonsHelperClass(username, alphabets, numbers, shapes, words, sentences, quiz);
+        LessonsHelperClass lessonsHelperClass = new LessonsHelperClass(username, alphabets, numbers, shapes, colors, words, sentences, quiz);
         lessonsReference.child(username).setValue(lessonsHelperClass);
 
         super.onBackPressed();

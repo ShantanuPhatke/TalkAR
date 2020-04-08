@@ -54,6 +54,7 @@
         <activity
             android:name=".LessonQuiz"
             android:parentActivityName=".LessonFragment" />
+        <activity android:name=".LessonColors" />
 
         <meta-data
             android:name="com.google.ar.core"

@@ -257,6 +257,45 @@
     </string-array>
 
 
+    <string-array name="modelColor_array">
+        <item>circle</item>
+        <item>square</item>
+        <item>triangle</item>
+        <item>rectangle</item>
+        <item>cone</item>
+    </string-array>
+
+    <string-array name="color_array">
+        <item>kreis</item>
+        <item>quadrat</item>
+        <item>dreieck</item>
+        <item>rechteck</item>
+        <item>kegel</item>
+    </string-array>
+
+    <string-array name="answerColor_0">
+        <item>circle</item>
+        <item>kreis</item>
+    </string-array>
+    <string-array name="answerColor_1">
+        <item>square</item>
+        <item>quadrat</item>
+    </string-array>
+    <string-array name="answerColor_2">
+        <item>triangle</item>
+        <item>dreieck</item>
+        <item>driehoek</item>
+    </string-array>
+    <string-array name="answerColor_3">
+        <item>rectangle</item>
+        <item>rechteck</item>
+    </string-array>
+    <string-array name="answerColor_4">
+        <item>cone</item>
+        <item>kegel</item>
+    </string-array>
+
+
     <string-array name="modelShape_array">
         <item>circle</item>
         <item>square</item>
