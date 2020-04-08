@@ -472,10 +472,10 @@
     </string-array>
 
     <string-array name="sentence_array">
-        <item>grüne Äpfel sind sauer</item>
-        <item>Öffne die Flasche</item>
-        <item>Kinder mögen Cupcake</item>
-        <item>Ich mag Eier</item>
+        <item>Green apples are sour|grüne Äpfel sind sauer</item>
+        <item>Open the bottle|Öffne die Flasche</item>
+        <item>Children like cupcake|Kinder mögen Cupcake</item>
+        <item>I like egg|Ich mag Eier</item>
     </string-array>
 
     <string-array name="answerSentence_0">

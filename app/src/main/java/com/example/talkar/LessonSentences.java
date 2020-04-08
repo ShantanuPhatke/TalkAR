@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.speech.RecognizerIntent;
 import android.view.View;
 import android.widget.Button;
@@ -66,8 +67,6 @@ public class LessonSentences extends AppCompatActivity {
 
         sentenceText = findViewById(R.id.sentenceText);
 
-        initLesson(sentencesCompleted);
-
         // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -91,12 +90,12 @@ public class LessonSentences extends AppCompatActivity {
                     });
         });
 
-
         // TextToSpeech
         textToSpeech = new TextToSpeech(this, status -> {
             if(status==TextToSpeech.SUCCESS){
-                textToSpeech.setLanguage(Locale.GERMAN);
+//                textToSpeech.setLanguage(Locale.ENGLISH);
 //                textToSpeech.setLanguage(new Locale("nl_NL"));
+
                 speak(tutorSpokenText);
             }
         });
@@ -113,12 +112,30 @@ public class LessonSentences extends AppCompatActivity {
 
     }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Initializing lesson
+        initLesson(sentencesCompleted);
+    }
+
     private void initLesson(int sentencesCompleted) {
         currentSentenceCount = sentencesCompleted;
         setCurrentSentenceOptions(currentSentenceCount);
         currentModel = sentenceModels[sentencesCompleted]+".sfb";
-        tutorSpokenText = sentence[sentencesCompleted];
-        sentenceText.setText(sentence[sentencesCompleted]);
+//        textToSpeech.setLanguage(Locale.ENGLISH);
+        tutorSpokenText = sentence[sentencesCompleted].split("\\|")[0];
+        sentenceText.setText(sentence[sentencesCompleted].split("\\|")[0]);
+
+        Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            textToSpeech.setLanguage(Locale.GERMAN);
+            tutorSpokenText = sentence[sentencesCompleted].split("\\|")[1];
+            speak(tutorSpokenText);
+            sentenceText.setText(sentence[sentencesCompleted].split("\\|")[1]);
+        }, 3000);
+
     }
 
     private void setCurrentSentenceOptions(int currentSentenceCount) {
@@ -145,11 +162,20 @@ public class LessonSentences extends AppCompatActivity {
                 currentSentenceCount += 1;
                 setCurrentSentenceOptions(currentSentenceCount);
                 currentModel = sentenceModels[currentSentenceCount]+".sfb";
-                tutorSpokenText = sentence[currentSentenceCount];
-                textToSpeech.setLanguage(Locale.GERMAN);
+                tutorSpokenText = sentence[currentSentenceCount].split("\\|")[0];
+                textToSpeech.setLanguage(Locale.ENGLISH);
 //                textToSpeech.setLanguage(new Locale("nl_NL"));
                 speak(tutorSpokenText);
-                sentenceText.setText(sentence[currentSentenceCount]);
+                sentenceText.setText(sentence[currentSentenceCount].split("\\|")[0]);
+
+                Handler handler = new Handler();
+                handler.postDelayed(() -> {
+                    textToSpeech.setLanguage(Locale.GERMAN);
+                    tutorSpokenText = sentence[currentSentenceCount].split("\\|")[1];
+                    speak(tutorSpokenText);
+                    sentenceText.setText(sentence[currentSentenceCount].split("\\|")[1]);
+                }, 3000);
+
                 updateSharedPrefs(currentSentenceCount);
                 updateDatabase(currentSentenceCount);
             }
