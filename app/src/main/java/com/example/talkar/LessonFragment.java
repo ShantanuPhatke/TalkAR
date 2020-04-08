@@ -25,7 +25,7 @@ public class LessonFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        CardView alphabets, numbers, shapes, words, sentences, quiz, dictionary;
+        CardView alphabets, numbers, shapes, colors, words, greetings, sentences, quiz, dictionary;
 
         View view = inflater.inflate(R.layout.fragment_lesson, container, false);
 
@@ -47,9 +47,21 @@ public class LessonFragment extends Fragment {
             startActivity(intent);
         });
 
+        colors = view.findViewById(R.id.btnColors);
+        colors.setOnClickListener(v -> {
+            Intent intent = new Intent(this.getContext(), LessonColors.class);
+            startActivity(intent);
+        });
+
         words = view.findViewById(R.id.btnWords);
         words.setOnClickListener(v -> {
             Intent intent = new Intent(this.getContext(), LessonWords.class);
+            startActivity(intent);
+        });
+
+        greetings = view.findViewById(R.id.btnGreetings);
+        greetings.setOnClickListener(v -> {
+            Intent intent = new Intent(this.getContext(), LessonGreetings.class);
             startActivity(intent);
         });
 
