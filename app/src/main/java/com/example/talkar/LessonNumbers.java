@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -48,6 +49,11 @@ public class LessonNumbers extends AppCompatActivity {
 
     private DatabaseReference reference;
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
