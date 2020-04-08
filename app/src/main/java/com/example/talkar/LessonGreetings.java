@@ -117,8 +117,15 @@ public class LessonGreetings extends AppCompatActivity {
         currentGreetingCount = greetingsCompleted;
         setCurrentGreetingOptions(currentGreetingCount);
         currentModel = greetingModels[greetingsCompleted]+".sfb";
-        tutorSpokenText = greeting[greetingsCompleted];
-        greetingText.setText(greeting[greetingsCompleted]);
+        tutorSpokenText = greeting[greetingsCompleted].split("\\|")[0];
+        greetingText.setText(greeting[greetingsCompleted].split("\\|")[0]);
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        tutorSpokenText = greeting[greetingsCompleted].split("\\|")[1];
+        greetingText.setText(greeting[greetingsCompleted].split("\\|")[1]);
     }
 
     private void setCurrentGreetingOptions(int currentGreetingCount) {
@@ -151,8 +158,15 @@ public class LessonGreetings extends AppCompatActivity {
                 tutorSpokenText = greeting[currentGreetingCount];
                 textToSpeech.setLanguage(Locale.GERMAN);
 //                textToSpeech.setLanguage(new Locale("nl_NL"));
-                speak(tutorSpokenText);
-                greetingText.setText(greeting[currentGreetingCount]);
+                tutorSpokenText = greeting[currentGreetingCount].split("\\|")[0];
+                greetingText.setText(greeting[currentGreetingCount].split("\\|")[0]);
+                try {
+                    TimeUnit.SECONDS.sleep(3);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                tutorSpokenText = greeting[currentGreetingCount].split("\\|")[1];
+                greetingText.setText(greeting[currentGreetingCount].split("\\|")[1]);
                 updateSharedPrefs(currentGreetingCount);
                 updateDatabase(currentGreetingCount);
             }
