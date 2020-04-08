@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import android.speech.tts.TextToSpeech;
 
@@ -45,7 +46,6 @@ public class LessonAlphabets extends AppCompatActivity {
     private static final String sp_username = "Username";
 
     private String username;
-
     private DatabaseReference reference;
 
     @Override
@@ -207,12 +207,9 @@ public class LessonAlphabets extends AppCompatActivity {
 
     private void proceedLesson() {
         if (verifySpeech()){
-//            System.out.println("VERIFIED TRUE");
-//            System.out.println("ALPHABET MODELS LENGTH"+alphabetModels.length);
             if (currentAlphabetCount != alphabetModels.length-1){
                 currentAlphabetCount += 1;
                 setCurrentAlphabetOptions(currentAlphabetCount);
-//                System.out.println("CURRENT ALPHABET COUNT: " +currentAlphabetCount);
                 currentModel = alphabetModels[currentAlphabetCount]+".sfb";
                 tutorSpokenText = alphabetModels[currentAlphabetCount];
 //                textToSpeech.setLanguage(Locale.GERMAN);
@@ -230,8 +227,6 @@ public class LessonAlphabets extends AppCompatActivity {
             }
         }
         else{
-
-            System.out.println("VERIFIED FALSE ( NOT VERIFIED )");
             textToSpeech.setLanguage(Locale.ENGLISH);
             speak("Try again!");
         }
@@ -250,22 +245,20 @@ public class LessonAlphabets extends AppCompatActivity {
     }
 
     private boolean verifySpeech() {
-
-        System.out.println("CURRENT ALPHABET OPTIONS: "+ Arrays.toString(currentAlphabetOptions));
-        System.out.println("USER SPOKEN TEXT: "+ userSpokenText);
         if (!userSpokenText.equals("")) {
             if (Arrays.asList(currentAlphabetOptions).contains(userSpokenText)){
-//                System.out.println("CURRENT ALPHABET OPTIONS: "+ Arrays.toString(currentAlphabetOptions));
-//                System.out.println("USER SPOKEN TEXT: "+ userSpokenText);
+                textToSpeech.setLanguage(Locale.ENGLISH);
+                speak("Correct answer!");
+                try {
+                    TimeUnit.SECONDS.sleep(2);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 return true;
             }
             return false;
         }
         return false;
-
-//        return !userSpokenText.equals("") && Arrays.asList(currentAlphabetOptions).contains(String.valueOf(userSpokenText));
-//        return !userSpokenText.equals("") && userSpokenText.equals(tutorSpokenText);
-
     }
 
     // AR function

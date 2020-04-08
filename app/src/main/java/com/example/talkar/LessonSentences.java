@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import android.speech.tts.TextToSpeech;
 
@@ -179,8 +180,20 @@ public class LessonSentences extends AppCompatActivity {
     }
 
     private boolean verifySpeech() {
-        return !userSpokenText.equals("") && Arrays.asList(currentSentenceOptions).contains(userSpokenText);
-//        return !userSpokenText.equals("") && userSpokenText.equals(tutorSpokenText);
+        if (!userSpokenText.equals("")) {
+            if (Arrays.asList(currentSentenceOptions).contains(userSpokenText)){
+                textToSpeech.setLanguage(Locale.ENGLISH);
+                speak("Correct answer!");
+                try {
+                    TimeUnit.SECONDS.sleep(2);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 
     // SpeechToText functions
