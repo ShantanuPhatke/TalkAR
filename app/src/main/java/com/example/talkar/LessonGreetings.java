@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.speech.RecognizerIntent;
 import android.view.View;
 import android.widget.Button;
@@ -95,7 +96,7 @@ public class LessonGreetings extends AppCompatActivity {
         // TextToSpeech
         textToSpeech = new TextToSpeech(this, status -> {
             if(status==TextToSpeech.SUCCESS){
-                textToSpeech.setLanguage(Locale.GERMAN);
+//                textToSpeech.setLanguage(Locale.GERMAN);
 //                textToSpeech.setLanguage(new Locale("nl_NL"));
                 speak(tutorSpokenText);
             }
@@ -119,13 +120,15 @@ public class LessonGreetings extends AppCompatActivity {
         currentModel = greetingModels[greetingsCompleted]+".sfb";
         tutorSpokenText = greeting[greetingsCompleted].split("\\|")[0];
         greetingText.setText(greeting[greetingsCompleted].split("\\|")[0]);
-        try {
-            TimeUnit.SECONDS.sleep(3);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        tutorSpokenText = greeting[greetingsCompleted].split("\\|")[1];
-        greetingText.setText(greeting[greetingsCompleted].split("\\|")[1]);
+
+        Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            textToSpeech.setLanguage(Locale.GERMAN);
+            tutorSpokenText = greeting[greetingsCompleted].split("\\|")[1];
+            speak(tutorSpokenText);
+            greetingText.setText(greeting[greetingsCompleted].split("\\|")[1]);
+        }, 3000);
+
     }
 
     private void setCurrentGreetingOptions(int currentGreetingCount) {
@@ -155,18 +158,19 @@ public class LessonGreetings extends AppCompatActivity {
                 currentGreetingCount += 1;
                 setCurrentGreetingOptions(currentGreetingCount);
                 currentModel = greetingModels[currentGreetingCount]+".sfb";
-                tutorSpokenText = greeting[currentGreetingCount];
-                textToSpeech.setLanguage(Locale.GERMAN);
-//                textToSpeech.setLanguage(new Locale("nl_NL"));
                 tutorSpokenText = greeting[currentGreetingCount].split("\\|")[0];
+                textToSpeech.setLanguage(Locale.ENGLISH);
+                speak(tutorSpokenText);
                 greetingText.setText(greeting[currentGreetingCount].split("\\|")[0]);
-                try {
-                    TimeUnit.SECONDS.sleep(3);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                tutorSpokenText = greeting[currentGreetingCount].split("\\|")[1];
-                greetingText.setText(greeting[currentGreetingCount].split("\\|")[1]);
+
+                Handler handler = new Handler();
+                handler.postDelayed(() -> {
+                    textToSpeech.setLanguage(Locale.GERMAN);
+                    tutorSpokenText = greeting[currentGreetingCount].split("\\|")[1];
+                    speak(tutorSpokenText);
+                    greetingText.setText(greeting[currentGreetingCount].split("\\|")[1]);
+                }, 3000);
+
                 updateSharedPrefs(currentGreetingCount);
                 updateDatabase(currentGreetingCount);
             }
