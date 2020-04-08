@@ -67,6 +67,9 @@ public class LessonSentences extends AppCompatActivity {
 
         sentenceText = findViewById(R.id.sentenceText);
 
+        // Initializing lesson
+        initLesson(sentencesCompleted);
+
         // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -112,13 +115,6 @@ public class LessonSentences extends AppCompatActivity {
 
     }
 
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        // Initializing lesson
-        initLesson(sentencesCompleted);
-    }
 
     private void initLesson(int sentencesCompleted) {
         currentSentenceCount = sentencesCompleted;
