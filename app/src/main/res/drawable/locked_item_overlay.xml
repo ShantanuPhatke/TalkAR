@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    <item android:drawable="@color/colorDarkOverlay" android:height="80dp" android:width="80dp"  />-->
+    <item android:height="80dp" android:width="80dp">
+        <shape android:shape="rectangle" >
+            <corners android:radius="5dp" />
+            <solid android:color="@color/colorDarkOverlay" />
+        </shape>
+    </item>
+    <item android:drawable="@drawable/ic_lock_black_24dp" android:height="50dp" android:width="50dp" android:gravity="center" />
+</layer-list>

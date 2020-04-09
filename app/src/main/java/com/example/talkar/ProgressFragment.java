@@ -1,5 +1,6 @@
 package com.example.talkar;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -30,7 +32,7 @@ public class ProgressFragment extends Fragment {
 
     private TextView alphabetTextView, numberTextView, shapeTextView, colorTextView, wordTextView, greetingTextView, sentenceTextView, quizTextView;
     private ProgressBar alphabetProgress, numberProgress, shapeProgress, colorProgress, wordProgress, greetingProgress, sentenceProgress, quizProgress;
-
+    private CardView alphabetCard, numberCard, shapeCard, colorCard, wordCard, greetingCard, sentenceCard, quizCard;
     private int totalAlphabets, totalNumbers, totalShapes, totalColors, totalWords, totalGreetings, totalSentences, totalQuiz;
 
     @Override
@@ -74,7 +76,21 @@ public class ProgressFragment extends Fragment {
         sentenceProgress = view.findViewById(R.id.sentenceBar);
         quizProgress = view.findViewById(R.id.quizBar);
 
+        alphabetCard = view.findViewById(R.id.alphabetCard);
+        numberCard = view.findViewById(R.id.numberCard);
+        shapeCard = view.findViewById(R.id.shapeCard);
+        colorCard = view.findViewById(R.id.colorCard);
+        wordCard = view.findViewById(R.id.wordCard);
+        greetingCard = view.findViewById(R.id.greetingCard);
+        sentenceCard = view.findViewById(R.id.sentenceCard);
+        quizCard = view.findViewById(R.id.quizCard);
+
         getProgressData();
+
+        alphabetCard.setOnClickListener(v -> {
+            Intent intent = new Intent(this.getContext(), InventoryAlphabet.class);
+            startActivity(intent);
+        });
 
         return view;
     }

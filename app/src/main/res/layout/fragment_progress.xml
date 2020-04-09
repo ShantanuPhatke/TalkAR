@@ -47,6 +47,7 @@
             android:layout_marginTop="-80dp">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/alphabetCard"
                 android:layout_width="0dp"
                 android:layout_height="125dp"
                 android:layout_weight="1"
@@ -116,6 +117,7 @@
             android:layout_marginTop="-30dp">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/numberCard"
                 android:layout_width="0dp"
                 android:layout_height="125dp"
                 android:layout_weight="1"
@@ -185,6 +187,7 @@
             android:layout_marginTop="-30dp">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/shapeCard"
                 android:layout_width="0dp"
                 android:layout_height="125dp"
                 android:layout_weight="1"
@@ -255,6 +258,7 @@
             android:layout_marginTop="-30dp">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/colorCard"
                 android:layout_width="0dp"
                 android:layout_height="125dp"
                 android:layout_weight="1"
@@ -325,6 +329,7 @@
             android:layout_marginTop="-30dp">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/wordCard"
                 android:layout_width="0dp"
                 android:layout_height="125dp"
                 android:layout_weight="1"
@@ -395,6 +400,7 @@
             android:layout_marginTop="-30dp">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/greetingCard"
                 android:layout_width="0dp"
                 android:layout_height="125dp"
                 android:layout_weight="1"
@@ -465,6 +471,7 @@
             android:layout_marginTop="-30dp">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/sentenceCard"
                 android:layout_width="0dp"
                 android:layout_height="125dp"
                 android:layout_weight="1"
@@ -535,6 +542,7 @@
             android:layout_marginTop="-30dp">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/quizCard"
                 android:layout_width="0dp"
                 android:layout_height="125dp"
                 android:layout_weight="1"

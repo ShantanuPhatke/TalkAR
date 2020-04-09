@@ -59,6 +59,8 @@
         <activity android:name=".LessonGreetings"
             android:parentActivityName=".LessonFragment" />
         <activity android:name=".Feedback" />
+        <activity android:name=".InventoryAlphabet"
+            android:parentActivityName=".ProgressFragment" />
 
         <meta-data
             android:name="com.google.ar.core"
