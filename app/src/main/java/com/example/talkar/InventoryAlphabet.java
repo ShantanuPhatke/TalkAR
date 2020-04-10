@@ -38,11 +38,12 @@ public class InventoryAlphabet extends AppCompatActivity {
 
         int img = R.mipmap.ic_test_alphabet_foreground;
         int []arr = {img, img, img, img, img, img, img};
+        int alphabetsCompleted = 2;
 
         recyclerView = findViewById(R.id.recyclerView);
         layoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerViewAdapter = new RecyclerViewAdapter(arr);
+        recyclerViewAdapter = new RecyclerViewAdapter(arr, alphabetsCompleted);
 
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setHasFixedSize(true);
