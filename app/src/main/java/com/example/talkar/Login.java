@@ -46,6 +46,7 @@ public class Login extends AppCompatActivity {
     public static final String sp_lesson_greeting = "GreetingsCompleted";
     public static final String sp_lesson_sentence = "SentencesCompleted";
     public static final String sp_lesson_quiz = "QuizCompleted";
+    public static final String sp_previous_day = "PreviousDay";
 
 //    int[] lessonDetails = new int[2];
 
@@ -247,6 +248,9 @@ public class Login extends AppCompatActivity {
         editor.putString(sp_phoneNo, phoneNoFromDB);
         editor.putString(sp_password, passwordFromDB);
         editor.putBoolean(sp_isLoggedIn, true);
+
+        // Flag for Word of the day
+        editor.putInt(sp_previous_day, 0);
 
         editor.apply();
 

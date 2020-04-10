@@ -7,6 +7,20 @@
     <string name="no_connection">No internet connection! Cannot be translated!</string>
 
 
+    <string-array name="wordOTD_array">
+        <item>Dog|Hund</item>
+        <item>Smile|lächeln</item>
+        <item>Cat|Katze</item>
+        <item>Happiness|Glück</item>
+        <item>Love|Liebe</item>
+        <item>German|Deutscher</item>
+        <item>Thank you|Danke</item>
+        <item>Goodbye|Tschüss</item>
+        <item>Week|Woche</item>
+        <item>Tomorrow|Morgen</item>
+    </string-array>
+
+
     <string-array name="modelAlphabet_array">
         <item>a</item>
         <item>b</item>
