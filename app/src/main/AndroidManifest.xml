@@ -59,8 +59,12 @@
         <activity android:name=".LessonGreetings"
             android:parentActivityName=".LessonFragment" />
         <activity android:name=".Feedback" />
-        <activity android:name=".InventoryAlphabet"
+        <activity android:name=".InventoryAlphabets"
             android:parentActivityName=".ProgressFragment" />
+        <activity android:name=".InventoryShapes" />
+        <activity android:name=".InventoryNumbers" />
+        <activity android:name=".InventoryColors" />
+        <activity android:name=".InventoryWords" />
 
         <meta-data
             android:name="com.google.ar.core"

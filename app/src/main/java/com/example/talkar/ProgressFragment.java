@@ -88,7 +88,23 @@ public class ProgressFragment extends Fragment {
         getProgressData();
 
         alphabetCard.setOnClickListener(v -> {
-            Intent intent = new Intent(this.getContext(), InventoryAlphabet.class);
+            Intent intent = new Intent(this.getContext(), InventoryAlphabets.class);
+            startActivity(intent);
+        });
+        numberCard.setOnClickListener(v -> {
+            Intent intent = new Intent(this.getContext(), InventoryNumbers.class);
+            startActivity(intent);
+        });
+        shapeCard.setOnClickListener(v -> {
+            Intent intent = new Intent(this.getContext(), InventoryShapes.class);
+            startActivity(intent);
+        });
+        colorCard.setOnClickListener(v -> {
+            Intent intent = new Intent(this.getContext(), InventoryColors.class);
+            startActivity(intent);
+        });
+        wordCard.setOnClickListener(v -> {
+            Intent intent = new Intent(this.getContext(), InventoryWords.class);
             startActivity(intent);
         });
 

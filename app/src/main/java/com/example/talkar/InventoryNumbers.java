@@ -11,9 +11,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class InventoryAlphabet extends AppCompatActivity {
+public class InventoryNumbers extends AppCompatActivity {
 
-    private ImageView imageView;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerViewAdapter recyclerViewAdapter;
@@ -27,13 +26,13 @@ public class InventoryAlphabet extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inventory_alphabets);
+        setContentView(R.layout.activity_inventory_numbers);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Alphabets");
+        getSupportActionBar().setTitle("Numbers");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         int img = R.mipmap.ic_test_alphabet_foreground;
