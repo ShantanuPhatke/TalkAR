@@ -21,6 +21,11 @@
     </string-array>
 
 
+    <string-array name="alphabetInventory_array">
+        <item>R.drawable.a</item>
+    </string-array>
+
+
     <string-array name="modelAlphabet_array">
         <item>a</item>
         <item>b</item>

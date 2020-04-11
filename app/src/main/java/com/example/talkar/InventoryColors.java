@@ -1,6 +1,7 @@
 package com.example.talkar;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.WindowManager;
 
@@ -15,6 +16,11 @@ public class InventoryColors extends AppCompatActivity {
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     RecyclerViewAdapter recyclerViewAdapter;
+    String[] imagesArray;
+    int lessonsCompleted;
+
+    private static final String SHARED_PREFS = "sharedPrefs";
+    public static final String sp_lesson_color = "ColorsCompleted";
 
     @Override
     protected void onResume() {
@@ -34,14 +40,22 @@ public class InventoryColors extends AppCompatActivity {
         getSupportActionBar().setTitle("Colors");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        int img = R.mipmap.ic_test_alphabet_foreground;
-        int []arr = {img, img, img, img, img, img, img};
-        int alphabetsCompleted = 2;
+        SharedPreferences sharedPreferences = this.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        lessonsCompleted = sharedPreferences.getInt(sp_lesson_color, 0);
+
+        imagesArray = getResources().getStringArray(R.array.modelColor_array);
+
+        int []arr = new int[imagesArray.length];
+
+        for (int i=0; i<imagesArray.length; i ++){
+            int resID = getResources().getIdentifier(imagesArray[i] , "drawable", getPackageName());
+            arr[i] = resID;
+        }
 
         recyclerView = findViewById(R.id.recyclerView);
         layoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerViewAdapter = new RecyclerViewAdapter(arr, alphabetsCompleted);
+        recyclerViewAdapter = new RecyclerViewAdapter(arr, lessonsCompleted);
 
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setHasFixedSize(true);
