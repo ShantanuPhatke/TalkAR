@@ -335,7 +335,7 @@ sceneform.asset('sampledata/shapes/star.obj',
 
 sceneform.asset('sampledata/shapes/traingle.obj',
         'default',
-        'sampledata/shapes/traingle.sfa',
+        'sampledata/shapes/triangle.sfa',
         'src/main/assets/traingle')
 
 sceneform.asset('sampledata/words/airplane.obj',
