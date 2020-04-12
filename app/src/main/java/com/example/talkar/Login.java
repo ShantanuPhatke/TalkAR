@@ -30,6 +30,7 @@ public class Login extends AppCompatActivity {
     TextView heading, subHeading;
     TextInputLayout username, password, email;
     int alphabetsCompleted, numbersCompleted, shapesCompleted, colorsCompleted, wordsCompleted, greetingsCompleted, sentencesCompleted, quizCompleted;
+    int quizAlphabets, quizNumbers, quizShapes, quizColors, quizWords, quizGreetings, quizSentences;
 
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String sp_fullName = "FullName";
@@ -47,6 +48,13 @@ public class Login extends AppCompatActivity {
     public static final String sp_lesson_sentence = "SentencesCompleted";
     public static final String sp_lesson_quiz = "QuizCompleted";
     public static final String sp_previous_day = "PreviousDay";
+    public static final String sp_lesson_alphabet_quiz = "AlphabetsQuiz";
+    public static final String sp_lesson_number_quiz = "AlphabetsQuiz";
+    public static final String sp_lesson_shape_quiz = "AlphabetsQuiz";
+    public static final String sp_lesson_color_quiz = "AlphabetsQuiz";
+    public static final String sp_lesson_word_quiz = "AlphabetsQuiz";
+    public static final String sp_lesson_greeting_quiz = "AlphabetsQuiz";
+    public static final String sp_lesson_sentence_quiz = "AlphabetsQuiz";
 
 //    int[] lessonDetails = new int[2];
 
@@ -206,8 +214,15 @@ public class Login extends AppCompatActivity {
                     greetingsCompleted = dataSnapshot.child(username).child("greetings").getValue(int.class);
                     sentencesCompleted = dataSnapshot.child(username).child("sentences").getValue(int.class);
                     quizCompleted = dataSnapshot.child(username).child("quiz").getValue(int.class);
+                    quizAlphabets = dataSnapshot.child(username).child("quizAlphabets").getValue(int.class);
+                    quizNumbers = dataSnapshot.child(username).child("quizNumbers").getValue(int.class);
+                    quizShapes = dataSnapshot.child(username).child("quizShapes").getValue(int.class);
+                    quizColors = dataSnapshot.child(username).child("quizColors").getValue(int.class);
+                    quizWords = dataSnapshot.child(username).child("quizWords").getValue(int.class);
+                    quizGreetings = dataSnapshot.child(username).child("quizGreetings").getValue(int.class);
+                    quizSentences = dataSnapshot.child(username).child("quizSentences").getValue(int.class);
 
-                    savedataLesson(alphabetsCompleted, numbersCompleted, shapesCompleted, colorsCompleted, wordsCompleted, greetingsCompleted, sentencesCompleted, quizCompleted);
+                    savedataLesson(alphabetsCompleted, numbersCompleted, shapesCompleted, colorsCompleted, wordsCompleted, greetingsCompleted, sentencesCompleted, quizCompleted, quizAlphabets, quizNumbers, quizShapes, quizColors, quizWords, quizGreetings, quizSentences);
                 }
             }
 
@@ -220,7 +235,7 @@ public class Login extends AppCompatActivity {
 
 
     // Stores lesson specific data in SharedPrefs
-    private void savedataLesson(int alphabetsCompleted, int numbersCompleted, int shapesCompleted, int colorsCompleted, int wordsCompleted, int greetingsCompleted, int sentencesCompleted, int quizCompleted) {
+    private void savedataLesson(int alphabetsCompleted, int numbersCompleted, int shapesCompleted, int colorsCompleted, int wordsCompleted, int greetingsCompleted, int sentencesCompleted, int quizCompleted, int quizAlphabets, int quizNumbers, int quizShapes, int quizColors, int quizWords, int quizGreetings, int quizSentences) {
 
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -232,6 +247,14 @@ public class Login extends AppCompatActivity {
         editor.putInt(sp_lesson_greeting, greetingsCompleted);
         editor.putInt(sp_lesson_sentence, sentencesCompleted);
         editor.putInt(sp_lesson_quiz, quizCompleted);
+
+        editor.putInt(sp_lesson_alphabet_quiz, quizAlphabets);
+        editor.putInt(sp_lesson_number_quiz, quizNumbers);
+        editor.putInt(sp_lesson_shape_quiz, quizShapes);
+        editor.putInt(sp_lesson_color_quiz, quizColors);
+        editor.putInt(sp_lesson_word_quiz, quizWords);
+        editor.putInt(sp_lesson_greeting_quiz, quizGreetings);
+        editor.putInt(sp_lesson_sentence_quiz, quizSentences);
 
         editor.apply();
     }

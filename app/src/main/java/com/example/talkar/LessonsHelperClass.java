@@ -3,11 +3,11 @@ package com.example.talkar;
 class LessonsHelperClass {
 
     String username;
-    int alphabets, numbers, shapes, colors, words, greetings, sentences, quiz;
+    int alphabets, numbers, shapes, colors, words, greetings, sentences, quiz, quizAlphabets, quizNumbers, quizShapes, quizColors, quizWords, quizGreetings, quizSentences;
 
 
 
-    public LessonsHelperClass(String username, int alphabets, int numbers, int shapes, int colors, int words, int greetings, int sentences, int quiz) {
+    public LessonsHelperClass(String username, int alphabets, int numbers, int shapes, int colors, int words, int greetings, int sentences, int quiz, int quizAlphabets, int quizNumbers, int quizShapes, int quizColors, int quizWords, int quizGreetings, int quizSentences) {
 
         this.username = username;
         this.alphabets = alphabets;
@@ -18,6 +18,13 @@ class LessonsHelperClass {
         this.greetings = greetings;
         this.sentences = sentences;
         this.quiz = quiz;
+        this.quizAlphabets = quizAlphabets;
+        this.quizNumbers = quizNumbers;
+        this.quizShapes = quizAlphabets;
+        this.quizColors = quizColors;
+        this.quizWords = quizWords;
+        this.quizGreetings = quizGreetings;
+        this.quizSentences = quizSentences;
     }
 
     public String getUsername() {
@@ -79,5 +86,54 @@ class LessonsHelperClass {
     }
     public void setQuiz(int quiz) {
         this.quiz = quiz;
+    }
+
+    public int getQuizAlphabets() {
+        return quizAlphabets;
+    }
+    public void setQuizAlphabets(int quizAlphabets) {
+        this.quizAlphabets = quizAlphabets;
+    }
+
+    public int getQuizNumbers() {
+        return quizNumbers;
+    }
+    public void setQuizNumbers(int quizNumbers) {
+        this.quizNumbers = quizNumbers;
+    }
+
+    public int getQuizShapes() {
+        return quizShapes;
+    }
+    public void setQuizShapes(int quizShapes) {
+        this.quizShapes = quizShapes;
+    }
+
+    public int getQuizColors() {
+        return quizColors;
+    }
+    public void setQuizColors(int quizColors) {
+        this.quizColors = quizColors;
+    }
+
+    public int getQuizWords() {
+        return quizWords;
+    }
+    public void setQuizWords(int quizWords) {
+        this.quizWords = quizWords;
+    }
+
+    public int getQuizGreetings() {
+        return quizGreetings;
+    }
+    public void setQuizGreetings(int quizGreetings) {
+        this.quizGreetings = quizGreetings;
+    }
+
+    public int getQuizSentences() {
+        return quizSentences;
+    }
+    public void setQuizSentences(int quizSentences) {
+        this.quizSentences = quizSentences;
     }
 }

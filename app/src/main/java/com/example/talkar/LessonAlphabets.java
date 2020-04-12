@@ -24,6 +24,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
@@ -40,6 +42,10 @@ public class LessonAlphabets extends AppCompatActivity {
     int currentAlphabetCount, alphabetsCompleted;
     String currentModel;
     String[] alphabetModels, currentAlphabetOptions;
+
+    String[] quizQuestions, quizAnswers;
+    int quiz, quizCurrent, quizLength, quizFlag=0;
+    public static final String sp_lesson_alphabet_quiz = "AlphabetsQuiz";
 
     private static final String SHARED_PREFS = "sharedPrefs";
     public static final String sp_lesson_alphabet = "AlphabetsCompleted";
@@ -64,10 +70,17 @@ public class LessonAlphabets extends AppCompatActivity {
         SharedPreferences sharedPreferences = this.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         alphabetsCompleted = sharedPreferences.getInt(sp_lesson_alphabet, 0);
         username = sharedPreferences.getString(sp_username, "");
+        quiz = sharedPreferences.getInt(sp_lesson_alphabet_quiz, 0);
 
         alphabetModels = getResources().getStringArray(R.array.modelAlphabet_array);
 
-        initLesson(alphabetsCompleted);
+        // Check if quiz for module is completed
+        if (quiz == 1) {
+            callDialog();
+        } else {
+            initLesson(alphabetsCompleted);
+        }
+
 
         // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -110,15 +123,28 @@ public class LessonAlphabets extends AppCompatActivity {
         });
 
         next = findViewById(R.id.next);
-        next.setOnClickListener(v -> proceedLesson());
+        next.setOnClickListener(v -> {
+            if (quizFlag == 1) {
+                initQuiz();
+            } else if (quizFlag == 2 || quizFlag == 3){
+                speak("Quiz cannot be skipped!");
+            } else {
+                proceedLesson();
+            }
+        });
 
     }
 
     private void initLesson(int alphabetsCompleted) {
-        currentAlphabetCount = alphabetsCompleted;
-        setCurrentAlphabetOptions(currentAlphabetCount);
-        currentModel = alphabetModels[alphabetsCompleted]+".sfb";
-        tutorSpokenText = alphabetModels[alphabetsCompleted];
+        if (alphabetsCompleted < alphabetModels.length) {
+            currentAlphabetCount = alphabetsCompleted;
+            setCurrentAlphabetOptions(currentAlphabetCount);
+            currentModel = alphabetModels[alphabetsCompleted]+".sfb";
+            tutorSpokenText = alphabetModels[alphabetsCompleted];
+        } else {
+            tutorSpokenText = "Congratulation, you've completed the Alphabets Lesson. Time for a small quiz! Tap on Next to proceed.";
+            quizFlag = 1;
+        }
     }
 
     private void setCurrentAlphabetOptions(int currentAlphabetCount) {
@@ -296,9 +322,87 @@ public class LessonAlphabets extends AppCompatActivity {
                 ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 //                textView.setText(result.get(0));
                 userSpokenText = result.get(0).toLowerCase();
-                proceedLesson();
+                if (quizFlag == 2) {
+                    proceedQuiz();
+                } else {
+                    proceedLesson();
+                }
+
             }
         }
+    }
+
+    private void initQuiz() {
+
+        quizQuestions = getResources().getStringArray(R.array.modelAlphabetQuiz_array);
+        quizAnswers = getResources().getStringArray(R.array.answerAlphabetQuiz_array);
+        quizCurrent = 0;
+        quizLength = quizQuestions.length;
+        tutorSpokenText = "What are the following alphabets called in German?";
+        speak(tutorSpokenText);
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        currentModel = quizQuestions[quizCurrent]+".sfb";
+        tutorSpokenText = quizQuestions[quizCurrent];
+        speak(tutorSpokenText);
+        quizFlag = 2;
+
+    }
+
+    private void proceedQuiz() {
+        if (verifyQuiz()) {
+            if (quizCurrent < quizLength-1) {
+                quizCurrent += 1;
+                currentModel = quizQuestions[quizCurrent]+".sfb";
+                tutorSpokenText = quizQuestions[quizCurrent];
+//                textToSpeech.setLanguage(Locale.GERMAN);
+                textToSpeech.setLanguage(new Locale("nl_NL"));
+                speak(tutorSpokenText);
+            } else {
+                tutorSpokenText = "Woaho! You've successfully completed the quiz, congratulations!";
+                quizFlag = 3;
+                quiz = 1;
+
+                // Update shared prefs
+                SharedPreferences sharedPreferences = this.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt(sp_lesson_alphabet_quiz, 1);
+                editor.apply();
+
+                // Update database
+                reference.child(username).child("quizAlphabets").setValue(1);
+
+                callDialog();
+            }
+        } else {
+            speak("Wrong answer, try again.");
+        }
+    }
+
+    private void callDialog() {
+        ModuleCompletedDialog moduleCompletedDialog = new ModuleCompletedDialog();
+        moduleCompletedDialog.show(getSupportFragmentManager(), "Module completed");
+    }
+
+    private boolean verifyQuiz() {
+        if (!userSpokenText.equals("")) {
+            String []answerOptions = quizAnswers[quizCurrent].split("\\|");
+            if (Arrays.asList(answerOptions).contains(userSpokenText)){
+                textToSpeech.setLanguage(Locale.ENGLISH);
+                speak("Correct answer!");
+                try {
+                    TimeUnit.SECONDS.sleep(2);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 
 

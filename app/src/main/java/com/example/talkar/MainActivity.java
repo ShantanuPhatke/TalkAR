@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
         bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
 
-        logo = findViewById(R.id.imageTalkar);
+        logo = findViewById(R.id.image_talkar);
         circles = findViewById(R.id.imageFadeCircles);
 
         logo.setAnimation(topAnim);
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
 
-        }, 5000);
+        }, 3000);
 
     }
 

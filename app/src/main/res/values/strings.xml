@@ -153,6 +153,22 @@
         <item>z</item>
     </string-array>
 
+    <string-array name="modelAlphabetQuiz_array">
+        <item>b</item>
+        <item>u</item>
+        <item>t</item>
+        <item>w</item>
+        <item>p</item>
+    </string-array>
+
+    <string-array name="answerAlphabetQuiz_array">
+        <item>b|be|bee</item>
+        <item>u|you</item>
+        <item>t|tee|tea</item>
+        <item>w</item>
+        <item>p|pea</item>
+    </string-array>
+
 
     <string-array name="modelNumber_array">
         <item>0</item>
@@ -275,6 +291,22 @@
         <item>einhundert</item>
     </string-array>
 
+    <string-array name="modelNumberQuiz_array">
+        <item>5</item>
+        <item>20</item>
+        <item>8</item>
+        <item>100</item>
+        <item>7</item>
+    </string-array>
+
+    <string-array name="answerNumberQuiz_array">
+        <item>5</item>
+        <item>20</item>
+        <item>8</item>
+        <item>100</item>
+        <item>7</item>
+    </string-array>
+
 
     <string-array name="modelColor_array">
         <item>circle</item>
@@ -311,6 +343,18 @@
     </string-array>
     <string-array name="answerColor_4">
         <item>cone</item>
+        <item>kegel</item>
+    </string-array>
+
+    <string-array name="modelColorQuiz_array">
+        <item>circle</item>
+        <item>triangle</item>
+        <item>cone</item>
+    </string-array>
+
+    <string-array name="answerColorQuiz_array">
+        <item>kreis</item>
+        <item>dreieck|driehoek</item>
         <item>kegel</item>
     </string-array>
 
@@ -374,6 +418,22 @@
     </string-array>
     <string-array name="answerShape_8">
         <item>star</item>
+        <item>stern</item>
+    </string-array>
+
+    <string-array name="modelShapeQuiz_array">
+        <item>circle</item>
+        <item>triangle</item>
+        <item>cone</item>
+        <item>cross</item>
+        <item>star</item>
+    </string-array>
+
+    <string-array name="answerShapeQuiz_array">
+        <item>kreis</item>
+        <item>dreieck</item>
+        <item>kegel</item>
+        <item>kreuz</item>
         <item>stern</item>
     </string-array>
 
@@ -441,6 +501,22 @@
         <item>bett</item>
     </string-array>
     <string-array name="answerWord_4">
+        <item>vogel</item>
+    </string-array>
+
+    <string-array name="modelWordQuiz_array">
+        <item>airplane</item>
+        <item>axe</item>
+        <item>banana</item>
+        <item>bed</item>
+        <item>bird</item>
+    </string-array>
+
+    <string-array name="answerWordQuiz_array">
+        <item>flugzeug</item>
+        <item>axt</item>
+        <item>banane</item>
+        <item>bett</item>
         <item>vogel</item>
     </string-array>
 
