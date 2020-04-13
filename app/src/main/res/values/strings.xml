@@ -527,40 +527,35 @@
 
 
     <string-array name="modelGreeting_array">
-        <item>greeting1</item>
-        <item>greeting2</item>
-        <item>greeting3</item>
-        <item>greeting4</item>
-        <item>greeting5</item>
+        <item>girl_3_obj</item>
+        <item>girl_3_obj</item>
+        <item>girl_3_obj</item>
+        <item>girl_3_obj</item>
+        <item>girl_3_obj</item>
     </string-array>
 
     <string-array name="greeting_array">
-        <item>Good Morning1|grüne äpfel sind sauer</item>
-        <item>Good Morning2|grüne äpfel sind sauer</item>
-        <item>Good Morning3|grüne äpfel sind sauer</item>
-        <item>Good Morning4|grüne äpfel sind sauer</item>
-        <item>Good Morning5|grüne äpfel sind sauer</item>
+        <item>Good Morning|Guten Morgen</item>
+        <item>Good Afternoon|Guten Tag</item>
+        <item>Good Evening|Guten Abend</item>
+        <item>Good Night|Guten Nacht</item>
+        <item>Good Morning|Guten Tag</item>
     </string-array>
 
     <string-array name="answerGreeting_0">
-        <item>grüne äpfel sind sauer</item>
-        <item>grune apfel sind sauer</item>
+        <item>guten morgen</item>
     </string-array>
     <string-array name="answerGreeting_1">
-        <item>grüne äpfel sind sauer</item>
-        <item>grune apfel sind sauer</item>
+        <item>guten tag</item>
     </string-array>
     <string-array name="answerGreeting_2">
-        <item>grüne äpfel sind sauer</item>
-        <item>grune apfel sind sauer</item>
+        <item>guten abend</item>
     </string-array>
     <string-array name="answerGreeting_3">
-        <item>grüne äpfel sind sauer</item>
-        <item>grune apfel sind sauer</item>
+        <item>guten nacht</item>
     </string-array>
     <string-array name="answerGreeting_4">
-        <item>grüne äpfel sind sauer</item>
-        <item>grune apfel sind sauer</item>
+        <item>guten morgen</item>
     </string-array>
 
 
