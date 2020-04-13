@@ -4,111 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Feedback">
 
-
-    <com.hsalf.smilerating.SmileRating
-        android:id="@+id/smile_rating"
-        android:layout_width="408dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="367dp" />
-
-    <com.hsalf.smilerating.SmileRating
-        android:id="@+id/smile_rating1"
-        android:layout_width="412dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginBottom="230dp" />
-
-    <com.hsalf.smilerating.SmileRating
-        android:id="@+id/smile_rating2"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="150dp"
-        android:layout_marginBottom="101dp" />
+        android:background="@color/colorPrimary"/>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="212dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginBottom="522dp"
-        android:text="Feedback"
-        android:textColor="#F0D000"
-        android:textSize="36sp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="25dp"
+        android:layout_below="@+id/toolbar">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="402dp"
-        android:layout_height="46dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="465dp"
-        android:text="Informative:"
-        android:textColor="#096D09"
-        android:textSize="30sp" />
+        <RelativeLayout
+            android:id="@+id/informative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp">
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Informative:"
+                android:textColor="@color/colorPrimary"
+                android:textSize="30sp" />
+            <com.hsalf.smilerating.SmileRating
+                android:id="@+id/smile_rating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView2"/>
+        </RelativeLayout>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="376dp"
-        android:layout_height="42dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
-        android:layout_marginBottom="326dp"
-        android:text="User friendly :"
-        android:textColor="#096D09"
-        android:textSize="30sp" />
+        <RelativeLayout
+            android:id="@+id/firendly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_below="@+id/informative">
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="User friendly :"
+                android:textColor="@color/colorPrimary"
+                android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="410dp"
-        android:layout_height="45dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="6dp"
-        android:layout_marginRight="6dp"
-        android:layout_marginBottom="169dp"
-        android:text="Overall Experience:"
-        android:textColor="#096D09"
-        android:textSize="30sp" />
+            <com.hsalf.smilerating.SmileRating
+                android:id="@+id/smile_rating1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView3"/>
+        </RelativeLayout>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="170dp"
-        android:layout_marginRight="170dp"
-        android:layout_marginBottom="29dp"
-        android:onClick="Submit"
-        android:text="Submit" />
+        <RelativeLayout
+            android:id="@+id/experience"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_below="@+id/firendly">
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Overall Experience:"
+                android:textColor="@color/colorPrimary"
+                android:textSize="30sp" />
+
+            <com.hsalf.smilerating.SmileRating
+                android:id="@+id/smile_rating2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView4"/>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/experience"
+            android:onClick="Submit"
+            android:text="Submit" />
+
+
+    </RelativeLayout>
 
 </RelativeLayout>

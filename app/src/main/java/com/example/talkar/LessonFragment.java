@@ -30,7 +30,6 @@ public class LessonFragment extends Fragment {
     private static final String sp_lesson_quiz = "QuizCompleted";
     private int alphabetsCompleted, numbersCompleted, shapesCompleted, colorsCompleted, wordsCompleted, greetingsCompleted, sentencesCompleted, quizCompleted;
 
-
     @Override
     public void onStart() {
         super.onStart();
@@ -44,6 +43,7 @@ public class LessonFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_lesson, container, false);
 
         CardView alphabets, numbers, shapes, colors, words, greetings, sentences, quiz, dictionary;
+        Button btnFeedback;
 
         SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         alphabetsCompleted = sharedPreferences.getInt(sp_lesson_alphabet, 0);
@@ -64,6 +64,13 @@ public class LessonFragment extends Fragment {
         sentences = view.findViewById(R.id.btnSentences);
         quiz = view.findViewById(R.id.btnQuiz);
 
+        btnFeedback = view.findViewById(R.id.btnFeedback);
+
+
+        btnFeedback.setOnClickListener(v -> {
+            Intent intent = new Intent(this.getContext(), Feedback.class);
+            startActivity(intent);
+        });
 
         alphabets.setOnClickListener(v -> {
             Intent intent = new Intent(this.getContext(), LessonAlphabets.class);

@@ -58,13 +58,19 @@
             android:parentActivityName=".LessonFragment" />
         <activity android:name=".LessonGreetings"
             android:parentActivityName=".LessonFragment" />
-        <activity android:name=".Feedback" />
         <activity android:name=".InventoryAlphabets"
             android:parentActivityName=".ProgressFragment" />
-        <activity android:name=".InventoryShapes" />
-        <activity android:name=".InventoryNumbers" />
-        <activity android:name=".InventoryColors" />
-        <activity android:name=".InventoryWords" />
+        <activity android:name=".InventoryShapes"
+            android:parentActivityName=".ProgressFragment" />
+        <activity android:name=".InventoryNumbers"
+            android:parentActivityName=".ProgressFragment" />
+        <activity android:name=".InventoryColors"
+            android:parentActivityName=".ProgressFragment" />
+        <activity android:name=".InventoryWords"
+            android:parentActivityName=".ProgressFragment" />
+
+        <activity android:name=".Feedback"
+            android:parentActivityName=".LessonFragment" />
 
         <meta-data
             android:name="com.google.ar.core"

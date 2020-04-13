@@ -6,4 +6,5 @@
     <color name="colorAccent">#353535</color>
     <color name="colorTransparent">#00000000</color>
     <color name="colorDarkOverlay">#33000000</color>
+    <color name="lightGrey">#ddd</color>
 </resources>

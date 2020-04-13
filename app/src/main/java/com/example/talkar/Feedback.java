@@ -1,9 +1,11 @@
  package com.example.talkar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.hsalf.smilerating.SmileRating;
@@ -14,6 +16,15 @@ import com.hsalf.smilerating.SmileRating;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
+        // Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Feedback");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         SmileRating smileRating2= findViewById(R.id.smile_rating2);
         smileRating2.setOnSmileySelectionListener((smiley, reselected) -> {
             switch (smiley) {
@@ -88,11 +99,12 @@ import com.hsalf.smilerating.SmileRating;
         }
         });
         smileRating.setOnRatingSelectedListener((level, reselected) ->
-                Toast.makeText(Feedback.this, "Selected Rating" +level,Toast.LENGTH_SHORT).show());
+                Toast.makeText(Feedback.this, "Selected Rating " +level,Toast.LENGTH_SHORT).show());
     }
 
      public void Submit(View view) {
-         Toast.makeText(Feedback.this, "Thank you!!", Toast.LENGTH_SHORT).show();
 
+         Toast.makeText(Feedback.this, "Thank you!!", Toast.LENGTH_SHORT).show();
+         finish();
      }
  }
