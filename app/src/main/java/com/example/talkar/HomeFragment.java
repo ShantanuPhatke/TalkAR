@@ -2,6 +2,7 @@ package com.example.talkar;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +21,14 @@ import com.google.ar.sceneform.rendering.AnimationData;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 
+import java.util.Locale;
+
 public class HomeFragment extends Fragment {
 
     private ModelAnimator modelAnimator;
     private int i;
     Button button;
+    private TextToSpeech textToSpeech;
 
     @Override
     public void onStart() {
@@ -35,6 +39,16 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        // TextToSpeech
+        textToSpeech = new TextToSpeech(getContext(), status -> {
+            if(status==TextToSpeech.SUCCESS){
+                textToSpeech.setLanguage(Locale.ENGLISH);
+//                textToSpeech.setLanguage(new Locale("nl_NL"));
+                speak("Welcome to Talk AR, an augmented reality based learning application. Head over to the next lesson and take a step further in mastering the German language.");
+            }
+        });
+
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
@@ -93,6 +107,11 @@ public class HomeFragment extends Fragment {
         modelAnimator.start();
         i++;
 
+    }
+
+    // TextToSpeech function
+    public void speak(String s){
+        textToSpeech.speak(s,TextToSpeech.QUEUE_FLUSH,null, null);
     }
 
 }
