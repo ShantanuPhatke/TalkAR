@@ -412,3 +412,14 @@ sceneform.asset('sampledata/colors/yarn.obj',
         'default',
         'sampledata/colors/yarn.sfa',
         'src/main/assets/yarn')
+
+sceneform.asset('sampledata/claudia.fbx',
+        'default',
+        'sampledata/claudia.sfa',
+        'src/main/assets/claudia')
+
+
+sceneform.asset('sampledata/tutor/yuki/girl_3_obj.obj',
+        'default',
+        'sampledata/tutor/yuki/girl_3_obj.sfa',
+        'src/main/assets/girl_3_obj')

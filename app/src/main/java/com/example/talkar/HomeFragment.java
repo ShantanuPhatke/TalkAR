@@ -55,7 +55,7 @@ public class HomeFragment extends Fragment {
 
         ModelRenderable
                 .builder()
-                .setSource(getActivity(), Uri.parse("cavaleiro.sfb"))
+                .setSource(getActivity(), Uri.parse("girl_3_obj.sfb"))
                 .build()
                 .thenAccept(modelRenderable -> {
 
