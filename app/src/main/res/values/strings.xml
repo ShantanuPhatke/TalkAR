@@ -309,53 +309,58 @@
 
 
     <string-array name="modelColor_array">
-        <item>circle</item>
-        <item>square</item>
-        <item>triangle</item>
-        <item>rectangle</item>
-        <item>cone</item>
+        <item>love_heart</item>
+        <item>yarn</item>
+        <item>banana</item>
+        <item>leaf</item>
+        <item>flamingo</item>
+        <item>lotus</item>
+        <item>orange</item>
     </string-array>
 
     <string-array name="color_array">
-        <item>kreis</item>
-        <item>quadrat</item>
-        <item>dreieck</item>
-        <item>rechteck</item>
-        <item>kegel</item>
+        <item>rot</item>
+        <item>blau</item>
+        <item>gelb</item>
+        <item>grün</item>
+        <item>rosa</item>
+        <item>Lila</item>
+        <item>orange</item>
     </string-array>
 
     <string-array name="answerColor_0">
-        <item>circle</item>
-        <item>kreis</item>
+        <item>rot</item>
     </string-array>
     <string-array name="answerColor_1">
-        <item>square</item>
-        <item>quadrat</item>
+        <item>blau</item>
     </string-array>
     <string-array name="answerColor_2">
-        <item>triangle</item>
-        <item>dreieck</item>
-        <item>driehoek</item>
+        <item>gelb</item>
     </string-array>
     <string-array name="answerColor_3">
-        <item>rectangle</item>
-        <item>rechteck</item>
+        <item>grün</item>
+        <item>grun</item>
     </string-array>
     <string-array name="answerColor_4">
-        <item>cone</item>
-        <item>kegel</item>
+        <item>rosa</item>
+    </string-array>
+    <string-array name="answerColor_5">
+        <item>lila</item>
+    </string-array>
+    <string-array name="answerColor_6">
+        <item>orange</item>
     </string-array>
 
     <string-array name="modelColorQuiz_array">
-        <item>circle</item>
-        <item>triangle</item>
-        <item>cone</item>
+        <item>banana</item>
+        <item>leaf</item>
+        <item>flamingo</item>
     </string-array>
 
     <string-array name="answerColorQuiz_array">
-        <item>kreis</item>
-        <item>dreieck|driehoek</item>
-        <item>kegel</item>
+        <item>gelb</item>
+        <item>grün</item>
+        <item>rosa</item>
     </string-array>
 
 

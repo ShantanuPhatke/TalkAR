@@ -382,3 +382,33 @@ sceneform.asset('sampledata/sentences/egg.obj',
         'default',
         'sampledata/sentences/egg.sfa',
         'src/main/assets/egg')
+
+sceneform.asset('sampledata/colors/flamingo.obj',
+        'default',
+        'sampledata/colors/flamingo.sfa',
+        'src/main/assets/flamingo')
+
+sceneform.asset('sampledata/colors/leaf.obj',
+        'default',
+        'sampledata/colors/leaf.sfa',
+        'src/main/assets/leaf')
+
+sceneform.asset('sampledata/colors/lotus.obj',
+        'default',
+        'sampledata/colors/lotus.sfa',
+        'src/main/assets/lotus')
+
+sceneform.asset('sampledata/colors/love_heart.obj',
+        'default',
+        'sampledata/colors/love_heart.sfa',
+        'src/main/assets/love_heart')
+
+sceneform.asset('sampledata/colors/orange.obj',
+        'default',
+        'sampledata/colors/orange.sfa',
+        'src/main/assets/orange')
+
+sceneform.asset('sampledata/colors/yarn.obj',
+        'default',
+        'sampledata/colors/yarn.sfa',
+        'src/main/assets/yarn')
