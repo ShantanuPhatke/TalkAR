@@ -45,7 +45,7 @@ public class HomeFragment extends Fragment {
             if(status==TextToSpeech.SUCCESS){
                 textToSpeech.setLanguage(Locale.ENGLISH);
 //                textToSpeech.setLanguage(new Locale("nl_NL"));
-                speak("Welcome to Talk AR, an augmented reality based learning application. Head over to the next lesson and take a step further in mastering the German language.");
+                speak("Welcome to Talk AR, an augmented reality based learning application. Find a plane in your phone and tap on the dots that appear on the screen.");
             }
         });
 
@@ -85,6 +85,7 @@ public class HomeFragment extends Fragment {
 //                    button.setOnClickListener(view -> animateModel(modelRenderable));
 
                     // Animate automatically for the first time
+                    speak("Hello! I'm your tutor, Eve. Head over to the next lesson and take a step further in mastering the German language.");
                     animateModel(modelRenderable);
 
                 });
