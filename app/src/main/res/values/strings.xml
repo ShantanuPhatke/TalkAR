@@ -514,19 +514,19 @@
     </string-array>
 
     <string-array name="modelWordQuiz_array">
-        <item>airplane</item>
-        <item>axe</item>
-        <item>banana</item>
-        <item>bed</item>
-        <item>bird</item>
+        <item>book</item>
+        <item>mask</item>
+        <item>earth</item>
+        <item>igloo</item>
+        <item>yak</item>
     </string-array>
 
     <string-array name="answerWordQuiz_array">
-        <item>flugzeug</item>
-        <item>axt</item>
-        <item>banane</item>
-        <item>bett</item>
-        <item>vogel</item>
+        <item>buch</item>
+        <item>maske</item>
+        <item>erde</item>
+        <item>iglu</item>
+        <item>yak</item>
     </string-array>
 
 

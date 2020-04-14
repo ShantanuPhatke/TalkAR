@@ -318,15 +318,6 @@ sceneform.asset('sampledata/shapes/square.obj',
         'sampledata/shapes/square.sfa',
         'src/main/assets/square')
 
-sceneform.asset('sampledata/words/rabbit.obj',
-        'default',
-        'sampledata/words/rabbit.sfa',
-        'src/main/assets/rabbit')
-
-sceneform.asset('sampledata/shapes/heart.obj',
-        'default',
-        'sampledata/shapes/heart.sfa',
-        'src/main/assets/heart')
 
 sceneform.asset('sampledata/shapes/star.obj',
         'default',
@@ -337,31 +328,6 @@ sceneform.asset('sampledata/shapes/traingle.obj',
         'default',
         'sampledata/shapes/triangle.sfa',
         'src/main/assets/traingle')
-
-sceneform.asset('sampledata/words/airplane.obj',
-        'default',
-        'sampledata/words/airplane.sfa',
-        'src/main/assets/airplane')
-
-sceneform.asset('sampledata/words/axe.obj',
-        'default',
-        'sampledata/words/axe.sfa',
-        'src/main/assets/axe')
-
-sceneform.asset('sampledata/words/banana.obj',
-        'default',
-        'sampledata/words/banana.sfa',
-        'src/main/assets/banana')
-
-sceneform.asset('sampledata/words/bed.obj',
-        'default',
-        'sampledata/words/bed.sfa',
-        'src/main/assets/bed')
-
-sceneform.asset('sampledata/words/bird.obj',
-        'default',
-        'sampledata/words/bird.sfa',
-        'src/main/assets/bird')
 
 sceneform.asset('sampledata/sentences/apple.obj',
         'default',
@@ -423,3 +389,63 @@ sceneform.asset('sampledata/tutor/yuki/girl_3_obj.obj',
         'default',
         'sampledata/tutor/yuki/girl_3_obj.sfa',
         'src/main/assets/girl_3_obj')
+
+sceneform.asset('sampledata/shapes/heart.obj',
+        'default',
+        'sampledata/shapes/heart.sfa',
+        'src/main/assets/heart')
+
+sceneform.asset('sampledata/words/airplane.obj',
+        'default',
+        'sampledata/words/airplane.sfa',
+        'src/main/assets/airplane')
+
+sceneform.asset('sampledata/words/axe.obj',
+        'default',
+        'sampledata/words/axe.sfa',
+        'src/main/assets/axe')
+
+sceneform.asset('sampledata/words/banana.obj',
+        'default',
+        'sampledata/words/banana.sfa',
+        'src/main/assets/banana')
+
+sceneform.asset('sampledata/words/bed.obj',
+        'default',
+        'sampledata/words/bed.sfa',
+        'src/main/assets/bed')
+
+sceneform.asset('sampledata/words/bird.obj',
+        'default',
+        'sampledata/words/bird.sfa',
+        'src/main/assets/bird')
+
+sceneform.asset('sampledata/words/book.obj',
+        'default',
+        'sampledata/words/book.sfa',
+        'src/main/assets/book')
+
+sceneform.asset('sampledata/words/earth.obj',
+        'default',
+        'sampledata/words/earth.sfa',
+        'src/main/assets/earth')
+
+sceneform.asset('sampledata/words/igloo.obj',
+        'default',
+        'sampledata/words/igloo.sfa',
+        'src/main/assets/igloo')
+
+sceneform.asset('sampledata/words/yak.obj',
+        'default',
+        'sampledata/words/yak.sfa',
+        'src/main/assets/yak')
+
+sceneform.asset('sampledata/words/rabbit.obj',
+        'default',
+        'sampledata/words/rabbit.sfa',
+        'src/main/assets/rabbit')
+
+sceneform.asset('sampledata/words/mask.obj',
+        'default',
+        'sampledata/words/mask.sfa',
+        'src/main/assets/mask')
