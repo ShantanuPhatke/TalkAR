@@ -49,12 +49,12 @@ public class Login extends AppCompatActivity {
     public static final String sp_lesson_quiz = "QuizCompleted";
     public static final String sp_previous_day = "PreviousDay";
     public static final String sp_lesson_alphabet_quiz = "AlphabetsQuiz";
-    public static final String sp_lesson_number_quiz = "AlphabetsQuiz";
-    public static final String sp_lesson_shape_quiz = "AlphabetsQuiz";
-    public static final String sp_lesson_color_quiz = "AlphabetsQuiz";
-    public static final String sp_lesson_word_quiz = "AlphabetsQuiz";
-    public static final String sp_lesson_greeting_quiz = "AlphabetsQuiz";
-    public static final String sp_lesson_sentence_quiz = "AlphabetsQuiz";
+    public static final String sp_lesson_number_quiz = "NumbersQuiz";
+    public static final String sp_lesson_shape_quiz = "ShapesQuiz";
+    public static final String sp_lesson_color_quiz = "ColorsQuiz";
+    public static final String sp_lesson_word_quiz = "WordsQuiz";
+    public static final String sp_lesson_greeting_quiz = "GreetingsQuiz";
+    public static final String sp_lesson_sentence_quiz = "SentencesQuiz";
 
 //    int[] lessonDetails = new int[2];
 
