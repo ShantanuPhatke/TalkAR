@@ -53,6 +53,10 @@
         <item>x</item>
         <item>y</item>
         <item>z</item>
+        <item>ä</item>
+        <item>ö</item>
+        <item>ü</item>
+        <item>ß</item>
     </string-array>
 
     <string-array name="answerAlphabet_0">
