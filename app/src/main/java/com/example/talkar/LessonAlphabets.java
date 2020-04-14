@@ -255,6 +255,7 @@ public class LessonAlphabets extends AppCompatActivity {
         else{
             textToSpeech.setLanguage(Locale.ENGLISH);
             speak("Try again!");
+            Toast.makeText(this, "Try again!", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -275,6 +276,7 @@ public class LessonAlphabets extends AppCompatActivity {
             if (Arrays.asList(currentAlphabetOptions).contains(userSpokenText)){
                 textToSpeech.setLanguage(Locale.ENGLISH);
                 speak("Correct answer!");
+                Toast.makeText(this, "Correct answer!", Toast.LENGTH_LONG).show();
                 try {
                     TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {
@@ -379,6 +381,7 @@ public class LessonAlphabets extends AppCompatActivity {
             }
         } else {
             speak("Wrong answer, try again.");
+            Toast.makeText(this, "Try again!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -393,6 +396,7 @@ public class LessonAlphabets extends AppCompatActivity {
             if (Arrays.asList(answerOptions).contains(userSpokenText)){
                 textToSpeech.setLanguage(Locale.ENGLISH);
                 speak("Correct answer!");
+                Toast.makeText(this, "Correct answer!", Toast.LENGTH_LONG).show();
                 try {
                     TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {

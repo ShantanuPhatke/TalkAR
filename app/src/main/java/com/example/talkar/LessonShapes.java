@@ -202,6 +202,7 @@ public class LessonShapes extends AppCompatActivity {
         else{
             textToSpeech.setLanguage(Locale.ENGLISH);
             speak("Try again!");
+            Toast.makeText(this, "Try again!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -219,6 +220,7 @@ public class LessonShapes extends AppCompatActivity {
     private boolean verifySpeech() {
         if (!userSpokenText.equals("")) {
             if (Arrays.asList(currentShapeOptions).contains(userSpokenText)){
+                Toast.makeText(this, "Correct answer!", Toast.LENGTH_LONG).show();
                 textToSpeech.setLanguage(Locale.ENGLISH);
                 speak("Correct answer!");
                 try {
@@ -313,6 +315,7 @@ public class LessonShapes extends AppCompatActivity {
             }
         } else {
             speak("Wrong answer, try again.");
+            Toast.makeText(this, "Try again!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -327,6 +330,7 @@ public class LessonShapes extends AppCompatActivity {
             if (Arrays.asList(answerOptions).contains(userSpokenText)){
                 textToSpeech.setLanguage(Locale.ENGLISH);
                 speak("Correct answer!");
+                Toast.makeText(this, "Correct answer!", Toast.LENGTH_LONG).show();
                 try {
                     TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {

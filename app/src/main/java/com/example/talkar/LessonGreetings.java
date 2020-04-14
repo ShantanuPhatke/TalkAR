@@ -192,6 +192,7 @@ public class LessonGreetings extends AppCompatActivity {
         else{
             textToSpeech.setLanguage(Locale.ENGLISH);
             speak("Try again!");
+            Toast.makeText(this, "Try again!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -211,6 +212,7 @@ public class LessonGreetings extends AppCompatActivity {
             if (Arrays.asList(currentGreetingOptions).contains(userSpokenText)){
                 textToSpeech.setLanguage(Locale.ENGLISH);
                 speak("Correct answer!");
+                Toast.makeText(this, "Correct answer!", Toast.LENGTH_LONG).show();
                 try {
                     TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {

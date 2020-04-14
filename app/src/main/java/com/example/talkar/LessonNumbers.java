@@ -242,6 +242,7 @@ public class LessonNumbers extends AppCompatActivity {
 //            System.out.println("QWERTY: "+userSpokenText);
             textToSpeech.setLanguage(Locale.ENGLISH);
             speak("Try again!");
+            Toast.makeText(this, "Try again!", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -262,6 +263,7 @@ public class LessonNumbers extends AppCompatActivity {
             if (Arrays.asList(currentNumberOptions).contains(userSpokenText)){
                 textToSpeech.setLanguage(Locale.ENGLISH);
                 speak("Correct answer!");
+                Toast.makeText(this, "Correct answer!", Toast.LENGTH_SHORT).show();
                 try {
                     TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {
@@ -365,6 +367,7 @@ public class LessonNumbers extends AppCompatActivity {
             }
         } else {
             speak("Wrong answer, try again.");
+            Toast.makeText(this, "Try again!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -379,6 +382,7 @@ public class LessonNumbers extends AppCompatActivity {
             if (Arrays.asList(answerOptions).contains(userSpokenText)){
                 textToSpeech.setLanguage(Locale.ENGLISH);
                 speak("Correct answer!");
+                Toast.makeText(this, "Correct answer!", Toast.LENGTH_SHORT).show();
                 try {
                     TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {
