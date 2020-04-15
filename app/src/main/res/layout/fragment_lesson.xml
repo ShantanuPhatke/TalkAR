@@ -260,7 +260,7 @@
                         android:id="@+id/word_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Words"
+                        android:text="Things"
                         android:includeFontPadding="false"
                         android:textSize="25sp"
                         android:fontFamily="sans-serif-black"

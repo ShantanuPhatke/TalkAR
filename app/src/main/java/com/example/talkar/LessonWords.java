@@ -83,7 +83,7 @@ public class LessonWords extends AppCompatActivity {
         // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Words");
+        getSupportActionBar().setTitle("Things");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
