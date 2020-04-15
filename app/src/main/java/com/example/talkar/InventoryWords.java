@@ -4,6 +4,7 @@ package com.example.talkar;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,7 @@ public class InventoryWords extends AppCompatActivity {
     RecyclerViewAdapter recyclerViewAdapter;
     String[] imagesArray;
     int lessonsCompleted;
+    TextView hours;
 
     private static final String SHARED_PREFS = "sharedPrefs";
     public static final String sp_lesson_word = "WordsCompleted";
@@ -66,6 +68,11 @@ public class InventoryWords extends AppCompatActivity {
 
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setHasFixedSize(true);
+
+        // Hours
+        hours = findViewById(R.id.hours);
+        String hourCount = lessonsCompleted*3+"/"+imagesArray.length*3+" Minutes";
+        hours.setText(hourCount);
 
     }
 
