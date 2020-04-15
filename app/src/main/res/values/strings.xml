@@ -326,7 +326,7 @@
 
 
     <string-array name="modelColor_array">
-        <item>love_heart</item>
+        <item>heart</item>
         <item>yarn</item>
         <item>banana</item>
         <item>leaf</item>
@@ -679,35 +679,57 @@
 
 
     <string-array name="modelQuiz_array">
-        <item>question01</item>
-        <item>question02</item>
-        <item>question03</item>
-        <item>question04</item>
-        <item>question05</item>
+        <item>h</item>
+        <item>k</item>
+        <item>11</item>
+        <item>90</item>
+        <item>cone</item>
+        <item>cross</item>
+        <item>leaf</item>
+        <item>orange</item>
+        <item>ice_cream</item>
+        <item>knife</item>
+        <item>bottle</item>
+        <item>girl_3_obj</item>
+        <item>girl_3_obj</item>
+        <item>egg</item>
+        <item>cupcake</item>
     </string-array>
 
     <string-array name="quiz_array">
-        <item>This is question01?</item>
-        <item>This is question02?</item>
-        <item>This is question03?</item>
-        <item>This is question04?</item>
-        <item>This is question05?</item>
+        <item>What is pronunciation of alphabet H in german language?</item>
+        <item>What is pronunciation of alphabet K in german language?</item>
+        <item>11?</item>
+        <item>90?</item>
+        <item>Can you recall what Cone is called?</item>
+        <item>Cross?</item>
+        <item>What is color of leaf?</item>
+        <item>Orange in german?</item>
+        <item>Ice Cream</item>
+        <item>Knife</item>
+        <item>Bottle</item>
+        <item>How do you greet someone you meet in the Evening?</item>
+        <item>What if you meet them in Afternoon?</item>
+        <item>I like egg</item>
+        <item>Children like cupcake</item>
     </string-array>
 
-    <string-array name="answerQuiz_0">
-        <item>circle</item>
-    </string-array>
-    <string-array name="answerQuiz_1">
-        <item>circle</item>
-    </string-array>
-    <string-array name="answerQuiz_2">
-        <item>circle</item>
-    </string-array>
-    <string-array name="answerQuiz_3">
-        <item>circle</item>
-    </string-array>
-    <string-array name="answerQuiz_4">
-        <item>circle</item>
+    <string-array name="answerQuiz_array">
+        <item>h|ha</item>
+        <item>k|ka</item>
+        <item>11|elf|11 uhr</item>
+        <item>90</item>
+        <item>kegel</item>
+        <item>kreuz</item>
+        <item>grüne|grune</item>
+        <item>orange</item>
+        <item>eiscreme|ice cream</item>
+        <item>messer</item>
+        <item>flasche</item>
+        <item>guten abend</item>
+        <item>guten tag</item>
+        <item>ich mag eier</item>
+        <item>kinder mögen cupcake|kinder mogen cupcake|kinder mugen cupcake</item>
     </string-array>
 
 </resources>

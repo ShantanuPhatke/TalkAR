@@ -39,7 +39,7 @@ public class LessonQuiz extends AppCompatActivity {
     Button replay, next;
     int currentQuizCount, quizCompleted;
     String currentModel;
-    String[] quizModels, currentQuizOptions, quiz;
+    String[] quizModels, answerOptionsArray, quiz;
     TextView quizText;
 
     private static final String SHARED_PREFS = "sharedPrefs";
@@ -67,12 +67,17 @@ public class LessonQuiz extends AppCompatActivity {
         quizCompleted = sharedPreferences.getInt(sp_lesson_quiz, 0);
         username = sharedPreferences.getString(sp_username, "");
 
-        quizModels = getResources().getStringArray(R.array.modelSentence_array);
+        quizModels = getResources().getStringArray(R.array.modelQuiz_array);
         quiz = getResources().getStringArray(R.array.quiz_array);
+        answerOptionsArray = getResources().getStringArray(R.array.answerQuiz_array);
 
         quizText = findViewById(R.id.quizText);
 
-        initLesson(quizCompleted);
+        if (quizCompleted>0) {
+            initLesson(quizCompleted);
+        } else {
+            tutorSpokenText = "You've come a long way now, passed several tests from previous modules. This quiz will challenge you to recall everything you've learnt so far! Good luck. Press next to start.";
+        }
 
         // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -101,7 +106,7 @@ public class LessonQuiz extends AppCompatActivity {
         // TextToSpeech
         textToSpeech = new TextToSpeech(this, status -> {
             if(status==TextToSpeech.SUCCESS){
-                textToSpeech.setLanguage(Locale.GERMAN);
+//                textToSpeech.setLanguage(Locale.GERMAN);
 //                textToSpeech.setLanguage(new Locale("nl_NL"));
                 speak(tutorSpokenText);
             }
@@ -109,42 +114,30 @@ public class LessonQuiz extends AppCompatActivity {
 
         replay = findViewById(R.id.replay);
         replay.setOnClickListener(v ->{
-            textToSpeech.setLanguage(Locale.GERMAN);
+            textToSpeech.setLanguage(Locale.ENGLISH);
 //            textToSpeech.setLanguage(new Locale("nl_NL"));
             textToSpeech.speak(tutorSpokenText, TextToSpeech.QUEUE_FLUSH,null, null);
         });
 
         next = findViewById(R.id.next);
-        next.setOnClickListener(v -> proceedLesson());
+        next.setOnClickListener(v -> {
+            if (quizCompleted>0) {
+                proceedLesson();
+            } else {
+                initLesson(quizCompleted);
+            }
+        });
 
     }
 
     private void initLesson(int quizCompleted) {
         currentQuizCount = quizCompleted;
-        setCurrentSentenceOptions(currentQuizCount);
         currentModel = quizModels[quizCompleted]+".sfb";
         tutorSpokenText = quiz[quizCompleted];
-        quizText.setText(quiz[quizCompleted]);
-    }
-
-    private void setCurrentSentenceOptions(int currentQuizCount) {
-        switch (currentQuizCount){
-            case 0:
-                currentQuizOptions = getResources().getStringArray(R.array.answerQuiz_0);
-                break;
-            case 1:
-                currentQuizOptions = getResources().getStringArray(R.array.answerQuiz_1);
-                break;
-            case 2:
-                currentQuizOptions = getResources().getStringArray(R.array.answerQuiz_2);
-                break;
-            case 3:
-                currentQuizOptions = getResources().getStringArray(R.array.answerQuiz_3);
-                break;
-            case 4:
-                currentQuizOptions = getResources().getStringArray(R.array.answerQuiz_4);
-                break;
+        if (quizCompleted==0) {
+            speak(tutorSpokenText);
         }
+        quizText.setText(quiz[quizCompleted]);
     }
 
 
@@ -154,7 +147,7 @@ public class LessonQuiz extends AppCompatActivity {
                 currentQuizCount += 1;
                 currentModel = quizModels[currentQuizCount]+".sfb";
                 tutorSpokenText = quiz[currentQuizCount];
-                textToSpeech.setLanguage(Locale.GERMAN);
+                textToSpeech.setLanguage(Locale.ENGLISH);
 //                textToSpeech.setLanguage(new Locale("nl_NL"));
                 speak(tutorSpokenText);
                 quizText.setText(quiz[currentQuizCount]);
@@ -168,6 +161,8 @@ public class LessonQuiz extends AppCompatActivity {
                 textToSpeech.setLanguage(Locale.ENGLISH);
                 speak(tutorSpokenText);
                 quizText.setText("Congratulations!!");
+
+                callDialog();
             }
         }
         else{
@@ -175,6 +170,11 @@ public class LessonQuiz extends AppCompatActivity {
             speak("Try again!");
             Toast.makeText(this, "Try again!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void callDialog() {
+        FeedbackDialog feedbackDialog = new FeedbackDialog();
+        feedbackDialog.show(getSupportFragmentManager(), "Course completed");
     }
 
     private void updateDatabase(int currentQuizCount) {
@@ -190,10 +190,11 @@ public class LessonQuiz extends AppCompatActivity {
 
     private boolean verifySpeech() {
         if (!userSpokenText.equals("")) {
-            if (Arrays.asList(currentQuizOptions).contains(userSpokenText)){
+            String []answerOptions = answerOptionsArray[currentQuizCount].split("\\|");
+            if (Arrays.asList(answerOptions).contains(userSpokenText)){
                 textToSpeech.setLanguage(Locale.ENGLISH);
                 speak("Correct answer!");
-                Toast.makeText(this, "Correct answer!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Correct answer!", Toast.LENGTH_LONG).show();
                 try {
                     TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {
@@ -211,8 +212,8 @@ public class LessonQuiz extends AppCompatActivity {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
 //        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.GERMAN);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "nl_NL");
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "de-DE");
-//        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "nl_NL");
 
         if (intent.resolveActivity(getPackageManager()) != null){
             startActivityForResult(intent, 10);
