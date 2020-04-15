@@ -31,7 +31,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private TextInputLayout fullName, email, phoneNo, password;
-    private TextView fullNameLabel, usernameLabel, lessonCount;
+    private TextView fullNameLabel, usernameLabel, lessonCount, hourCount;
 
     private String _username, _fullname, _email, _phoneNo, _password;
 
@@ -54,13 +54,14 @@ public class ProfileFragment extends Fragment {
 
     private DatabaseReference reference;
 
+    private int totalAlphabets, totalNumbers, totalShapes, totalColors, totalWords, totalGreetings, totalSentences, totalQuiz;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-
         super.onCreate(savedInstanceState);
 
         reference = FirebaseDatabase.getInstance().getReference("users");
@@ -68,6 +69,9 @@ public class ProfileFragment extends Fragment {
 
         lessonCount = view.findViewById(R.id.lessonCount);
         lessonCount.setText(String.valueOf(getLessonCount()));
+
+        hourCount = view.findViewById(R.id.hourCount);
+        hourCount.setText(String.valueOf(getHourCount()));
 
 
         fullNameLabel = view.findViewById(R.id.full_name_field);
@@ -109,6 +113,23 @@ public class ProfileFragment extends Fragment {
         getUserData();
 
         return view;
+    }
+
+    private int getHourCount() {
+        totalAlphabets = getResources().getStringArray(R.array.modelAlphabet_array).length;
+        totalNumbers = getResources().getStringArray(R.array.modelNumber_array).length;
+        totalShapes = getResources().getStringArray(R.array.modelShape_array).length;
+        totalColors = getResources().getStringArray(R.array.modelColor_array).length;
+        totalWords = getResources().getStringArray(R.array.modelWord_array).length;
+        totalGreetings = getResources().getStringArray(R.array.modelGreeting_array).length;
+        totalSentences = getResources().getStringArray(R.array.modelSentence_array).length;
+        totalQuiz = getResources().getStringArray(R.array.modelQuiz_array).length;
+
+        int totalLessonCount = totalAlphabets+totalColors+totalGreetings+totalNumbers+totalQuiz+totalSentences+totalShapes+totalWords;
+        int completedLessonCount = getLessonCount();
+        int timeRemaining = (totalLessonCount - completedLessonCount)*3;
+        return timeRemaining;
+
     }
 
     private int getLessonCount() {
