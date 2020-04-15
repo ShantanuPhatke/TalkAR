@@ -31,7 +31,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private TextInputLayout fullName, email, phoneNo, password;
-    private TextView fullNameLabel, usernameLabel;
+    private TextView fullNameLabel, usernameLabel, lessonCount;
 
     private String _username, _fullname, _email, _phoneNo, _password;
 
@@ -42,6 +42,15 @@ public class ProfileFragment extends Fragment {
     private static final String sp_phoneNo = "PhoneNo";
     private static final String sp_password = "Password";
     private static final String sp_isLoggedIn = "IsLoggedIn";
+
+    private  static final String sp_lesson_alphabet = "AlphabetsCompleted";
+    private  static final String sp_lesson_number = "NumbersCompleted";
+    private  static final String sp_lesson_shape = "ShapesCompleted";
+    private  static final String sp_lesson_color = "ColorsCompleted";
+    private  static final String sp_lesson_word = "WordsCompleted";
+    private  static final String sp_lesson_greeting = "GreetingsCompleted";
+    private  static final String sp_lesson_sentence = "SentencesCompleted";
+    private  static final String sp_lesson_quiz = "QuizCompleted";
 
     private DatabaseReference reference;
 
@@ -55,6 +64,11 @@ public class ProfileFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         reference = FirebaseDatabase.getInstance().getReference("users");
+
+
+        lessonCount = view.findViewById(R.id.lessonCount);
+        lessonCount.setText(String.valueOf(getLessonCount()));
+
 
         fullNameLabel = view.findViewById(R.id.full_name_field);
         usernameLabel = view.findViewById(R.id.username_field);
@@ -95,6 +109,22 @@ public class ProfileFragment extends Fragment {
         getUserData();
 
         return view;
+    }
+
+    private int getLessonCount() {
+        SharedPreferences sharedPreferences = this.getActivity().getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        int alphabetCount = sharedPreferences.getInt(sp_lesson_alphabet, 0);
+        int numberCount = sharedPreferences.getInt(sp_lesson_number, 0);
+        int shapeCount = sharedPreferences.getInt(sp_lesson_shape, 0);
+        int colorCount = sharedPreferences.getInt(sp_lesson_color, 0);
+        int wordCount = sharedPreferences.getInt(sp_lesson_word, 0);
+        int greetingCount = sharedPreferences.getInt(sp_lesson_greeting, 0);
+        int sentenceCount = sharedPreferences.getInt(sp_lesson_sentence, 0);
+        int quizCount = sharedPreferences.getInt(sp_lesson_quiz, 0);
+
+        int lessonCount = alphabetCount+numberCount+shapeCount+colorCount+wordCount+greetingCount+sentenceCount+quizCount;
+
+        return lessonCount;
     }
 
     private boolean isPhoneNoChanged() {
