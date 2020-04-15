@@ -161,6 +161,12 @@ public class LessonColors extends AppCompatActivity {
             case 4:
                 currentColorOptions = getResources().getStringArray(R.array.answerColor_4);
                 break;
+            case 5:
+                currentColorOptions = getResources().getStringArray(R.array.answerColor_5);
+                break;
+            case 6:
+                currentColorOptions = getResources().getStringArray(R.array.answerColor_6);
+                break;
         }
     }
 
@@ -181,9 +187,10 @@ public class LessonColors extends AppCompatActivity {
             else {
                 updateSharedPrefs(currentColorCount +1);
                 updateDatabase(currentColorCount +1);
-                tutorSpokenText = "Congratulations on learning the German shapes!";
+                tutorSpokenText = "Congratulation, you've completed the Colors Lesson. Time for a small quiz! Tap on Next to proceed.";
                 textToSpeech.setLanguage(Locale.ENGLISH);
                 speak(tutorSpokenText);
+                quizFlag = 1;
             }
         }
         else{
@@ -285,7 +292,8 @@ public class LessonColors extends AppCompatActivity {
                 textToSpeech.setLanguage(new Locale("nl_NL"));
                 speak(tutorSpokenText);
             } else {
-                tutorSpokenText = "Woaho! You've successfully completed the quiz, congratulations!";
+                tutorSpokenText = "Great! You've successfully completed the quiz, congratulations!";
+                speak(tutorSpokenText);
                 quizFlag = 3;
                 quiz = 1;
 

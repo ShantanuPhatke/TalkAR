@@ -43,7 +43,7 @@ public class LessonNumbers extends AppCompatActivity {
 
     String[] quizQuestions, quizAnswers;
     int quiz, quizCurrent, quizLength, quizFlag=0;
-    public static final String sp_lesson_numbers_quiz = "AlphabetsQuiz";
+    public static final String sp_lesson_numbers_quiz = "NumbersQuiz";
 
     private static final String SHARED_PREFS = "sharedPrefs";
     public static final String sp_lesson_number = "NumbersCompleted";
@@ -108,15 +108,15 @@ public class LessonNumbers extends AppCompatActivity {
         textToSpeech = new TextToSpeech(this, status -> {
             if(status==TextToSpeech.SUCCESS){
 //                textToSpeech.setLanguage(Locale.GERMAN);
-                textToSpeech.setLanguage(new Locale("nl_NL"));
+//                textToSpeech.setLanguage(new Locale("nl_NL"));
                 speak(tutorSpokenText);
             }
         });
 
         replay = findViewById(R.id.replay);
         replay.setOnClickListener(v ->{
-//            textToSpeech.setLanguage(Locale.GERMAN);
-            textToSpeech.setLanguage(new Locale("nl_NL"));
+            textToSpeech.setLanguage(Locale.GERMAN);
+//            textToSpeech.setLanguage(new Locale("nl_NL"));
             textToSpeech.speak(tutorSpokenText, TextToSpeech.QUEUE_FLUSH,null, null);
         });
 
@@ -224,8 +224,8 @@ public class LessonNumbers extends AppCompatActivity {
                 setCurrentNumberOptions(currentNumberCount);
                 currentModel = numberModels[currentNumberCount]+".sfb";
                 tutorSpokenText = numberModels[currentNumberCount];
-//                textToSpeech.setLanguage(Locale.GERMAN);
-                textToSpeech.setLanguage(new Locale("nl_NL"));
+                textToSpeech.setLanguage(Locale.GERMAN);
+//                textToSpeech.setLanguage(new Locale("nl_NL"));
                 speak(tutorSpokenText);
                 updateSharedPrefs(currentNumberCount);
                 updateDatabase(currentNumberCount);
@@ -233,9 +233,10 @@ public class LessonNumbers extends AppCompatActivity {
             else {
                 updateSharedPrefs(currentNumberCount+1);
                 updateDatabase(currentNumberCount+1);
-                tutorSpokenText = "Congratulations on learning the German numbers!";
+                tutorSpokenText = "Congratulation, you've completed the Numbers Lesson. Time for a small quiz! Tap on Next to proceed.";
                 textToSpeech.setLanguage(Locale.ENGLISH);
                 speak(tutorSpokenText);
+                quizFlag = 1;
             }
         }
         else{
@@ -346,11 +347,13 @@ public class LessonNumbers extends AppCompatActivity {
                 quizCurrent += 1;
                 currentModel = quizQuestions[quizCurrent]+".sfb";
                 tutorSpokenText = quizQuestions[quizCurrent];
-//                textToSpeech.setLanguage(Locale.GERMAN);
-                textToSpeech.setLanguage(new Locale("nl_NL"));
+                textToSpeech.setLanguage(Locale.GERMAN);
+//                textToSpeech.setLanguage(new Locale("nl_NL"));
                 speak(tutorSpokenText);
             } else {
-                tutorSpokenText = "Woaho! You've successfully completed the quiz, congratulations!";
+                textToSpeech.setLanguage(Locale.ENGLISH);
+                tutorSpokenText = "Great! You've successfully completed the quiz, congratulations!";
+                speak(tutorSpokenText);
                 quizFlag = 3;
                 quiz = 1;
 
@@ -366,6 +369,7 @@ public class LessonNumbers extends AppCompatActivity {
                 callDialog();
             }
         } else {
+            textToSpeech.setLanguage(Locale.ENGLISH);
             speak("Wrong answer, try again.");
             Toast.makeText(this, "Try again!", Toast.LENGTH_SHORT).show();
         }

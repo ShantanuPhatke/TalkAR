@@ -110,7 +110,7 @@ public class LessonAlphabets extends AppCompatActivity {
         textToSpeech = new TextToSpeech(this, status -> {
             if(status==TextToSpeech.SUCCESS){
 //                textToSpeech.setLanguage(Locale.GERMAN);
-                textToSpeech.setLanguage(new Locale("nl_NL"));
+//                textToSpeech.setLanguage(new Locale("nl_NL"));
                 speak(tutorSpokenText);
             }
         });
@@ -227,6 +227,9 @@ public class LessonAlphabets extends AppCompatActivity {
             case 25:
                 currentAlphabetOptions = getResources().getStringArray(R.array.answerAlphabet_25);
                 break;
+            case 29:
+                currentAlphabetOptions = getResources().getStringArray(R.array.answerAlphabet_29);
+                break;
         }
     }
 
@@ -247,9 +250,10 @@ public class LessonAlphabets extends AppCompatActivity {
             else {
                 updateSharedPrefs(currentAlphabetCount+1);
                 updateDatabase(currentAlphabetCount+1);
-                tutorSpokenText = "Congratulations on learning the German alphabets!";
+                tutorSpokenText = "Congratulation, you've completed the Alphabets Lesson. Time for a small quiz! Tap on Next to proceed.";
                 textToSpeech.setLanguage(Locale.ENGLISH);
                 speak(tutorSpokenText);
+                quizFlag = 1;
             }
         }
         else{
@@ -364,7 +368,8 @@ public class LessonAlphabets extends AppCompatActivity {
                 textToSpeech.setLanguage(new Locale("nl_NL"));
                 speak(tutorSpokenText);
             } else {
-                tutorSpokenText = "Woaho! You've successfully completed the quiz, congratulations!";
+                tutorSpokenText = "Great! You've successfully completed the quiz, congratulations!";
+                speak(tutorSpokenText);
                 quizFlag = 3;
                 quiz = 1;
 

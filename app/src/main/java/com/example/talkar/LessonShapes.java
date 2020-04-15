@@ -107,7 +107,7 @@ public class LessonShapes extends AppCompatActivity {
         // TextToSpeech
         textToSpeech = new TextToSpeech(this, status -> {
             if(status==TextToSpeech.SUCCESS){
-                textToSpeech.setLanguage(Locale.GERMAN);
+//                textToSpeech.setLanguage(Locale.GERMAN);
 //                textToSpeech.setLanguage(new Locale("nl_NL"));
                 speak(tutorSpokenText);
             }
@@ -194,9 +194,10 @@ public class LessonShapes extends AppCompatActivity {
             else {
                 updateSharedPrefs(currentShapeCount+1);
                 updateDatabase(currentShapeCount+1);
-                tutorSpokenText = "Congratulations on learning the German shapes!";
+                tutorSpokenText = "Congratulation, you've completed the Shapes Lesson. Time for a small quiz! Tap on Next to proceed.";
                 textToSpeech.setLanguage(Locale.ENGLISH);
                 speak(tutorSpokenText);
+                quizFlag = 1;
             }
         }
         else{
@@ -274,6 +275,7 @@ public class LessonShapes extends AppCompatActivity {
         quizAnswers = getResources().getStringArray(R.array.answerShapeQuiz_array);
         quizCurrent = 0;
         quizLength = quizQuestions.length;
+        textToSpeech.setLanguage(Locale.ENGLISH);
         tutorSpokenText = "What are the following shapes called in German?";
         speak(tutorSpokenText);
         try {
@@ -294,11 +296,13 @@ public class LessonShapes extends AppCompatActivity {
                 quizCurrent += 1;
                 currentModel = quizQuestions[quizCurrent]+".sfb";
                 tutorSpokenText = quizAnswers[quizCurrent];
-//                textToSpeech.setLanguage(Locale.GERMAN);
-                textToSpeech.setLanguage(new Locale("nl_NL"));
+                textToSpeech.setLanguage(Locale.GERMAN);
+//                textToSpeech.setLanguage(new Locale("nl_NL"));
                 speak(tutorSpokenText);
             } else {
-                tutorSpokenText = "Woaho! You've successfully completed the quiz, congratulations!";
+                textToSpeech.setLanguage(Locale.ENGLISH);
+                tutorSpokenText = "Great! You've successfully completed the quiz, congratulations!";
+                speak(tutorSpokenText);
                 quizFlag = 3;
                 quiz = 1;
 
@@ -314,6 +318,7 @@ public class LessonShapes extends AppCompatActivity {
                 callDialog();
             }
         } else {
+            textToSpeech.setLanguage(Locale.ENGLISH);
             speak("Wrong answer, try again.");
             Toast.makeText(this, "Try again!", Toast.LENGTH_SHORT).show();
         }

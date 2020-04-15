@@ -38,13 +38,17 @@ public class LessonGreetings extends AppCompatActivity {
     private ArFragment arFragment;
     private TextToSpeech textToSpeech;
     Button replay, next;
-    int currentGreetingCount, greetingCompleted;
+    int currentGreetingCount, greetingsCompleted;
     String currentModel;
     String[] greetingModels, currentGreetingOptions, greeting;
     TextView greetingText;
 
+    String[] quizQuestionModels, quizQuestions, quizAnswers;
+    int quiz, quizCurrent, quizLength, quizFlag=0;
+    public static final String sp_lesson_greeting_quiz = "GreetingsQuiz";
+
     private static final String SHARED_PREFS = "sharedPrefs";
-    public static final String sp_lesson_greeting = "GreetingCompleted";
+    public static final String sp_lesson_greeting = "GreetingsCompleted";
     private static final String sp_username = "Username";
 
     private String username;
@@ -65,7 +69,7 @@ public class LessonGreetings extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference("lessons");
 
         SharedPreferences sharedPreferences = this.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        greetingCompleted = sharedPreferences.getInt(sp_lesson_greeting, 0);
+        greetingsCompleted = sharedPreferences.getInt(sp_lesson_greeting, 0);
         username = sharedPreferences.getString(sp_username, "");
 
         greetingModels = getResources().getStringArray(R.array.modelGreeting_array);
@@ -73,7 +77,14 @@ public class LessonGreetings extends AppCompatActivity {
 
         greetingText = findViewById(R.id.greetingText);
 
-        initLesson(greetingCompleted);
+        quiz = sharedPreferences.getInt(sp_lesson_greeting_quiz, 0);
+
+        // Check if quiz for module is completed
+        if (quiz == 1) {
+            callDialog();
+        } else {
+            initLesson(greetingsCompleted);
+        }
 
         // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -116,24 +127,37 @@ public class LessonGreetings extends AppCompatActivity {
         });
 
         next = findViewById(R.id.next);
-        next.setOnClickListener(v -> proceedLesson());
+        next.setOnClickListener(v -> {
+            if (quizFlag == 1) {
+                initQuiz();
+            } else if (quizFlag == 2 || quizFlag == 3){
+                speak("Quiz cannot be skipped!");
+            } else {
+                proceedLesson();
+            }
+        });
 
     }
 
     private void initLesson(int greetingsCompleted) {
-        currentGreetingCount = greetingsCompleted;
-        setCurrentGreetingOptions(currentGreetingCount);
-        currentModel = greetingModels[greetingsCompleted]+".sfb";
-        tutorSpokenText = greeting[greetingsCompleted].split("\\|")[0];
-        greetingText.setText(greeting[greetingsCompleted].split("\\|")[0]);
+        if (greetingsCompleted < greetingModels.length) {
+            currentGreetingCount = greetingsCompleted;
+            setCurrentGreetingOptions(currentGreetingCount);
+            currentModel = greetingModels[greetingsCompleted] + ".sfb";
+            tutorSpokenText = greeting[greetingsCompleted].split("\\|")[0];
+            greetingText.setText(greeting[greetingsCompleted].split("\\|")[0]);
 
-        Handler handler = new Handler();
-        handler.postDelayed(() -> {
-            textToSpeech.setLanguage(Locale.GERMAN);
-            tutorSpokenText = greeting[greetingsCompleted].split("\\|")[1];
-            speak(tutorSpokenText);
-            greetingText.setText(greeting[greetingsCompleted].split("\\|")[1]);
-        }, 3000);
+            Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                textToSpeech.setLanguage(Locale.GERMAN);
+                tutorSpokenText = greeting[greetingsCompleted].split("\\|")[1];
+                speak(tutorSpokenText);
+                greetingText.setText(greeting[greetingsCompleted].split("\\|")[1]);
+            }, 3000);
+        } else {
+            tutorSpokenText = "Congratulation, you've completed the Greetings Lesson. Time for a small quiz! Tap on Next to proceed.";
+            quizFlag = 1;
+        }
 
     }
 
@@ -183,10 +207,11 @@ public class LessonGreetings extends AppCompatActivity {
             else {
                 updateSharedPrefs(currentGreetingCount +1);
                 updateDatabase(currentGreetingCount +1);
-                tutorSpokenText = "Congratulations on learning the German sentences!";
+                tutorSpokenText = "Congratulation, you've completed the Greetings Lesson. Time for a small quiz! Tap on Next to proceed.";
                 textToSpeech.setLanguage(Locale.ENGLISH);
                 speak(tutorSpokenText);
                 greetingText.setText("Congratulations!!");
+                quizFlag = 1;
             }
         }
         else{
@@ -249,9 +274,95 @@ public class LessonGreetings extends AppCompatActivity {
                 ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 //                textView.setText(result.get(0));
                 userSpokenText = result.get(0).toLowerCase();
-                proceedLesson();
+                if (quizFlag == 2) {
+                    proceedQuiz();
+                } else {
+                    proceedLesson();
+                }
             }
         }
+    }
+
+    private void initQuiz() {
+
+        quizQuestionModels = getResources().getStringArray(R.array.modelGreetingQuiz_array);
+        quizQuestions = getResources().getStringArray(R.array.questionGreetingQuiz_array);
+        quizAnswers = getResources().getStringArray(R.array.answerGreetingQuiz_array);
+        quizCurrent = 0;
+        quizLength = quizQuestionModels.length;
+        tutorSpokenText = "What do the following greetings correspond to in German?";
+        textToSpeech.setLanguage(Locale.ENGLISH);
+        speak(tutorSpokenText);
+        try {
+            TimeUnit.SECONDS.sleep(4);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        currentModel = quizQuestionModels[quizCurrent]+".sfb";
+        tutorSpokenText = quizQuestions[quizCurrent];
+        greetingText.setText(quizQuestions[quizCurrent]);
+        speak(tutorSpokenText);
+        quizFlag = 2;
+
+    }
+
+    private void proceedQuiz() {
+        if (verifyQuiz()) {
+            if (quizCurrent < quizLength-1) {
+                quizCurrent += 1;
+                currentModel = quizQuestionModels[quizCurrent]+".sfb";
+                tutorSpokenText = quizQuestions[quizCurrent];
+                greetingText.setText(quizQuestions[quizCurrent]);
+                textToSpeech.setLanguage(Locale.ENGLISH);
+//                textToSpeech.setLanguage(new Locale("nl_NL"));
+                speak(tutorSpokenText);
+            } else {
+                textToSpeech.setLanguage(Locale.ENGLISH);
+                tutorSpokenText = "Wow! You've successfully completed the quiz, congratulations!";
+                speak(tutorSpokenText);
+                quizFlag = 3;
+                quiz = 1;
+
+                // Update shared prefs
+                SharedPreferences sharedPreferences = this.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt(sp_lesson_greeting_quiz, 1);
+                editor.apply();
+
+                // Update database
+                reference.child(username).child("quizGreetings").setValue(1);
+
+
+                callDialog();
+            }
+        } else {
+            speak("Wrong answer, try again.");
+            Toast.makeText(this, "Try again!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void callDialog() {
+        ModuleCompletedDialog moduleCompletedDialog = new ModuleCompletedDialog();
+        moduleCompletedDialog.show(getSupportFragmentManager(), "Module completed");
+    }
+
+    private boolean verifyQuiz() {
+        if (!userSpokenText.equals("")) {
+            String []answerOptions = quizAnswers[quizCurrent].split("\\|");
+            if (Arrays.asList(answerOptions).contains(userSpokenText)){
+                textToSpeech.setLanguage(Locale.ENGLISH);
+                speak("Correct answer!");
+                Toast.makeText(this, "Correct answer!", Toast.LENGTH_LONG).show();
+                try {
+                    TimeUnit.SECONDS.sleep(2);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 
 

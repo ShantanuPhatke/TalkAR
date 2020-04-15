@@ -107,7 +107,7 @@ public class LessonWords extends AppCompatActivity {
         // TextToSpeech
         textToSpeech = new TextToSpeech(this, status -> {
             if(status==TextToSpeech.SUCCESS){
-                textToSpeech.setLanguage(Locale.GERMAN);
+//                textToSpeech.setLanguage(Locale.GERMAN);
 //                textToSpeech.setLanguage(new Locale("nl_NL"));
                 speak(tutorSpokenText);
             }
@@ -135,11 +135,12 @@ public class LessonWords extends AppCompatActivity {
 
     private void initLesson(int wordsCompleted) {
         if (wordsCompleted < wordModels.length) {
-                currentWordCount = wordsCompleted;
+            currentWordCount = wordsCompleted;
             setCurrentWordOptions(currentWordCount);
             currentModel = wordModels[wordsCompleted]+".sfb";
             tutorSpokenText = word[wordsCompleted];
         } else {
+//            textToSpeech.setLanguage(Locale.ENGLISH);
             tutorSpokenText = "Congratulation, you've completed the Words Lesson. Time for a small quiz! Tap on Next to proceed.";
             quizFlag = 1;
         }
@@ -162,6 +163,9 @@ public class LessonWords extends AppCompatActivity {
             case 4:
                 currentWordOptions = getResources().getStringArray(R.array.answerWord_4);
                 break;
+            case 36:
+                currentWordOptions = getResources().getStringArray(R.array.answerWord_36);
+                break;
         }
     }
 
@@ -182,9 +186,10 @@ public class LessonWords extends AppCompatActivity {
             else {
                 updateSharedPrefs(currentWordCount+1);
                 updateDatabase(currentWordCount+1);
-                tutorSpokenText = "Congratulations on learning the German words!";
+                tutorSpokenText = "Congratulation, you've completed the Words Lesson. Time for a small quiz! Tap on Next to proceed.";
                 textToSpeech.setLanguage(Locale.ENGLISH);
                 speak(tutorSpokenText);
+                quizFlag = 1;
             }
         }
         else{
@@ -282,11 +287,13 @@ public class LessonWords extends AppCompatActivity {
                 quizCurrent += 1;
                 currentModel = quizQuestions[quizCurrent]+".sfb";
                 tutorSpokenText = quizAnswers[quizCurrent];
-//                textToSpeech.setLanguage(Locale.GERMAN);
-                textToSpeech.setLanguage(new Locale("nl_NL"));
+                textToSpeech.setLanguage(Locale.GERMAN);
+//                textToSpeech.setLanguage(new Locale("nl_NL"));
                 speak(tutorSpokenText);
             } else {
-                tutorSpokenText = "Woaho! You've successfully completed the quiz, congratulations!";
+                textToSpeech.setLanguage(Locale.ENGLISH);
+                tutorSpokenText = "Great! You've successfully completed the quiz, congratulations!";
+                speak(tutorSpokenText);
                 quizFlag = 3;
                 quiz = 1;
 
@@ -302,6 +309,7 @@ public class LessonWords extends AppCompatActivity {
                 callDialog();
             }
         } else {
+            textToSpeech.setLanguage(Locale.ENGLISH);
             speak("Wrong answer, try again.");
             Toast.makeText(this, "Try again!", Toast.LENGTH_SHORT).show();
         }

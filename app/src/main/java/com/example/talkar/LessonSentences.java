@@ -43,6 +43,10 @@ public class LessonSentences extends AppCompatActivity {
     String[] sentenceModels, currentSentenceOptions, sentence;
     TextView sentenceText;
 
+    String[] quizQuestionModels, quizQuestions, quizAnswers;
+    int quiz, quizCurrent, quizLength, quizFlag=0;
+    public static final String sp_lesson_sentence_quiz = "SentencesQuiz";
+
     private static final String SHARED_PREFS = "sharedPrefs";
     public static final String sp_lesson_sentence = "SentencesCompleted";
     private static final String sp_username = "Username";
@@ -73,8 +77,13 @@ public class LessonSentences extends AppCompatActivity {
 
         sentenceText = findViewById(R.id.sentenceText);
 
-        // Initializing lesson
-        initLesson(sentencesCompleted);
+        quiz = sharedPreferences.getInt(sp_lesson_sentence_quiz, 0);
+        // Check if quiz for module is completed
+        if (quiz == 1) {
+            callDialog();
+        } else {
+            initLesson(sentencesCompleted);
+        }
 
         // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -117,26 +126,39 @@ public class LessonSentences extends AppCompatActivity {
         });
 
         next = findViewById(R.id.next);
-        next.setOnClickListener(v -> proceedLesson());
+        next.setOnClickListener(v -> {
+            if (quizFlag == 1) {
+                initQuiz();
+            } else if (quizFlag == 2 || quizFlag == 3){
+                speak("Quiz cannot be skipped!");
+            } else {
+                proceedLesson();
+            }
+        });
 
     }
 
 
     private void initLesson(int sentencesCompleted) {
-        currentSentenceCount = sentencesCompleted;
-        setCurrentSentenceOptions(currentSentenceCount);
-        currentModel = sentenceModels[sentencesCompleted]+".sfb";
-//        textToSpeech.setLanguage(Locale.ENGLISH);
-        tutorSpokenText = sentence[sentencesCompleted].split("\\|")[0];
-        sentenceText.setText(sentence[sentencesCompleted].split("\\|")[0]);
+        if (sentencesCompleted < sentenceModels.length) {
+            currentSentenceCount = sentencesCompleted;
+            setCurrentSentenceOptions(currentSentenceCount);
+            currentModel = sentenceModels[sentencesCompleted]+".sfb";
+    //        textToSpeech.setLanguage(Locale.ENGLISH);
+            tutorSpokenText = sentence[sentencesCompleted].split("\\|")[0];
+            sentenceText.setText(sentence[sentencesCompleted].split("\\|")[0]);
 
-        Handler handler = new Handler();
-        handler.postDelayed(() -> {
-            textToSpeech.setLanguage(Locale.GERMAN);
-            tutorSpokenText = sentence[sentencesCompleted].split("\\|")[1];
-            speak(tutorSpokenText);
-            sentenceText.setText(sentence[sentencesCompleted].split("\\|")[1]);
-        }, 3000);
+            Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                textToSpeech.setLanguage(Locale.GERMAN);
+                tutorSpokenText = sentence[sentencesCompleted].split("\\|")[1];
+                speak(tutorSpokenText);
+                sentenceText.setText(sentence[sentencesCompleted].split("\\|")[1]);
+            }, 3000);
+        } else {
+            tutorSpokenText = "Congratulation, you've completed the Sentences Lesson. Time for a small quiz! Tap on Next to proceed.";
+            quizFlag = 1;
+        }
 
     }
 
@@ -184,10 +206,11 @@ public class LessonSentences extends AppCompatActivity {
             else {
                 updateSharedPrefs(currentSentenceCount+1);
                 updateDatabase(currentSentenceCount+1);
-                tutorSpokenText = "Congratulations on learning the German sentences!";
+                tutorSpokenText = "Congratulation, you've completed the Sentences Lesson. Time for a small quiz! Tap on Next to proceed.";
                 textToSpeech.setLanguage(Locale.ENGLISH);
                 speak(tutorSpokenText);
                 sentenceText.setText("Congratulations!!");
+                quizFlag = 1;
             }
         }
         else{
@@ -250,9 +273,92 @@ public class LessonSentences extends AppCompatActivity {
                 ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 //                textView.setText(result.get(0));
                 userSpokenText = result.get(0).toLowerCase();
-                proceedLesson();
+                if (quizFlag == 2) {
+                    proceedQuiz();
+                } else {
+                    proceedLesson();
+                }
             }
         }
+    }
+
+    private void initQuiz() {
+
+        quizQuestionModels = getResources().getStringArray(R.array.modelSentenceQuiz_array);
+        quizQuestions = getResources().getStringArray(R.array.questionSentenceQuiz_array);
+        quizAnswers = getResources().getStringArray(R.array.answerSentenceQuiz_array);
+        quizCurrent = 0;
+        quizLength = quizQuestionModels.length;
+        tutorSpokenText = "Translate the following sentences to German?";
+        speak(tutorSpokenText);
+        try {
+            TimeUnit.SECONDS.sleep(4);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        currentModel = quizQuestionModels[quizCurrent]+".sfb";
+        tutorSpokenText = quizQuestions[quizCurrent];
+        sentenceText.setText(quizQuestions[quizCurrent]);
+        speak(tutorSpokenText);
+        quizFlag = 2;
+
+    }
+
+    private void proceedQuiz() {
+        if (verifyQuiz()) {
+            if (quizCurrent < quizLength-1) {
+                quizCurrent += 1;
+                currentModel = quizQuestionModels[quizCurrent]+".sfb";
+                tutorSpokenText = quizQuestions[quizCurrent];
+                sentenceText.setText(quizQuestions[quizCurrent]);
+                textToSpeech.setLanguage(Locale.ENGLISH);
+//                textToSpeech.setLanguage(new Locale("nl_NL"));
+                speak(tutorSpokenText);
+            } else {
+                tutorSpokenText = "Great! You've successfully completed the quiz, congratulations!";
+                speak(tutorSpokenText);
+                quizFlag = 3;
+                quiz = 1;
+
+                // Update shared prefs
+                SharedPreferences sharedPreferences = this.getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt(sp_lesson_sentence_quiz, 1);
+                editor.apply();
+
+                // Update database
+                reference.child(username).child("quizSentences").setValue(1);
+
+                callDialog();
+            }
+        } else {
+            speak("Wrong answer, try again.");
+            Toast.makeText(this, "Try again!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void callDialog() {
+        ModuleCompletedDialog moduleCompletedDialog = new ModuleCompletedDialog();
+        moduleCompletedDialog.show(getSupportFragmentManager(), "Module completed");
+    }
+
+    private boolean verifyQuiz() {
+        if (!userSpokenText.equals("")) {
+            String []answerOptions = quizAnswers[quizCurrent].split("\\|");
+            if (Arrays.asList(answerOptions).contains(userSpokenText)){
+                textToSpeech.setLanguage(Locale.ENGLISH);
+                speak("Correct answer!");
+                Toast.makeText(this, "Correct answer!", Toast.LENGTH_LONG).show();
+                try {
+                    TimeUnit.SECONDS.sleep(2);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 
 

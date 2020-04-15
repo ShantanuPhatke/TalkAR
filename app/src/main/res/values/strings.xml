@@ -156,6 +156,19 @@
     <string-array name="answerAlphabet_25">
         <item>z</item>
     </string-array>
+    <string-array name="answerAlphabet_26">
+        <item>z</item>
+    </string-array>
+    <string-array name="answerAlphabet_27">
+        <item>z</item>
+    </string-array>
+    <string-array name="answerAlphabet_28">
+        <item>z</item>
+    </string-array>
+    <string-array name="answerAlphabet_29">
+        <item>ss</item>
+        <item>ß</item>
+    </string-array>
 
     <string-array name="modelAlphabetQuiz_array">
         <item>b</item>
@@ -356,9 +369,9 @@
     </string-array>
 
     <string-array name="modelColorQuiz_array">
-        <item>banana</item>
-        <item>leaf</item>
-        <item>flamingo</item>
+        <item>yellow</item>
+        <item>green</item>
+        <item>pink</item>
     </string-array>
 
     <string-array name="answerColorQuiz_array">
@@ -486,7 +499,6 @@
         <item>plate</item>
         <item>rabbit</item>
         <item>yak</item>
-        <item>yarn</item>
     </string-array>
 
     <string-array name="word_array">
@@ -495,6 +507,38 @@
         <item>banane</item>
         <item>bett</item>
         <item>vogel</item>
+        <item>book</item>
+        <item>bottle</item>
+        <item>car</item>
+        <item>cup</item>
+        <item>cupcake</item>
+        <item>donut</item>
+        <item>earth</item>
+        <item>flamingo</item>
+        <item>frame</item>
+        <item>grass</item>
+        <item>guitar</item>
+        <item>hammer</item>
+        <item>hat</item>
+        <item>ice_cream</item>
+        <item>igloo</item>
+        <item>iron</item>
+        <item>jar</item>
+        <item>kettle</item>
+        <item>key</item>
+        <item>knife</item>
+        <item>ladder</item>
+        <item>lamp</item>
+        <item>leaf</item>
+        <item>lotus</item>
+        <item>mask</item>
+        <item>microwave</item>
+        <item>padlock</item>
+        <item>pill</item>
+        <item>pineapple</item>
+        <item>plate</item>
+        <item>rabbit</item>
+        <item>yak</item>
     </string-array>
 
     <string-array name="answerWord_0">
@@ -512,6 +556,9 @@
     <string-array name="answerWord_4">
         <item>vogel</item>
     </string-array>
+    <string-array name="answerWord_36">
+        <item>yak</item>
+    </string-array>
 
     <string-array name="modelWordQuiz_array">
         <item>book</item>
@@ -522,7 +569,7 @@
     </string-array>
 
     <string-array name="answerWordQuiz_array">
-        <item>buch</item>
+        <item>book</item>
         <item>maske</item>
         <item>erde</item>
         <item>iglu</item>
@@ -543,7 +590,7 @@
         <item>Good Afternoon|Guten Tag</item>
         <item>Good Evening|Guten Abend</item>
         <item>Good Night|Guten Nacht</item>
-        <item>Good Morning|Guten Tag</item>
+        <item>Bye|Tschüss</item>
     </string-array>
 
     <string-array name="answerGreeting_0">
@@ -559,6 +606,24 @@
         <item>guten nacht</item>
     </string-array>
     <string-array name="answerGreeting_4">
+        <item>tschüss</item>
+    </string-array>
+
+    <string-array name="modelGreetingQuiz_array">
+        <item>girl_3_obj</item>
+        <item>girl_3_obj</item>
+        <item>girl_3_obj</item>
+    </string-array>
+
+    <string-array name="questionGreetingQuiz_array">
+        <item>Good Night</item>
+        <item>Good Afternoon</item>
+        <item>Good Morning</item>
+    </string-array>
+
+    <string-array name="answerGreetingQuiz_array">
+        <item>guten nacht</item>
+        <item>guten tag</item>
         <item>guten morgen</item>
     </string-array>
 
@@ -591,6 +656,24 @@
         <item>kinder mugen cupcake</item>
     </string-array>
     <string-array name="answerSentence_3">
+        <item>ich mag eier</item>
+    </string-array>
+
+    <string-array name="modelSentenceQuiz_array">
+        <item>bottle</item>
+        <item>apple</item>
+        <item>egg</item>
+    </string-array>
+
+    <string-array name="questionSentenceQuiz_array">
+        <item>Open the bottle</item>
+        <item>Green apples are sour</item>
+        <item>I like egg</item>
+    </string-array>
+
+    <string-array name="answerSentenceQuiz_array">
+        <item>öffne die flasche</item>
+        <item>grüne äpfel sind sauer</item>
         <item>ich mag eier</item>
     </string-array>
 
