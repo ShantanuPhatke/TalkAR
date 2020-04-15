@@ -12,6 +12,7 @@ import android.speech.RecognizerIntent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.ar.core.Anchor;
@@ -39,6 +40,8 @@ public class LessonShapes extends AppCompatActivity {
     int currentShapeCount, shapesCompleted;
     String currentModel;
     String[] shapeModels, currentShapeOptions, shape;
+
+    TextView shapeText;
 
     String[] quizQuestions, quizAnswers;
     int quiz, quizCurrent, quizLength, quizFlag=0;
@@ -72,6 +75,8 @@ public class LessonShapes extends AppCompatActivity {
 
         shapeModels = getResources().getStringArray(R.array.modelShape_array);
         shape = getResources().getStringArray(R.array.shape_array);
+
+        shapeText = findViewById(R.id.shapeText);
 
         // Check if quiz for module is completed
         if (quiz == 1) {
@@ -139,6 +144,7 @@ public class LessonShapes extends AppCompatActivity {
             setCurrentShapeOptions(currentShapeCount);
             currentModel = shapeModels[shapesCompleted]+".sfb";
             tutorSpokenText = shape[shapesCompleted];
+            shapeText.setText(shapeModels[shapesCompleted]);
         } else {
             tutorSpokenText = "Congratulation, you've completed the Shapes Lesson. Time for a small quiz! Tap on Next to proceed.";
             quizFlag = 1;
@@ -188,12 +194,14 @@ public class LessonShapes extends AppCompatActivity {
                 textToSpeech.setLanguage(Locale.GERMAN);
 //                textToSpeech.setLanguage(new Locale("nl_NL"));
                 speak(tutorSpokenText);
+                shapeText.setText(shapeModels[currentShapeCount]);
                 updateSharedPrefs(currentShapeCount);
                 updateDatabase(currentShapeCount);
             }
             else {
                 updateSharedPrefs(currentShapeCount+1);
                 updateDatabase(currentShapeCount+1);
+                shapeText.setText("Congratulations!");
                 tutorSpokenText = "Congratulation, you've completed the Shapes Lesson. Time for a small quiz! Tap on Next to proceed.";
                 textToSpeech.setLanguage(Locale.ENGLISH);
                 speak(tutorSpokenText);
