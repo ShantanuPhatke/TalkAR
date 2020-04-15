@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -61,11 +62,13 @@ public class HomeFragment extends Fragment {
 
 
         final ImageView imageView2 = view.findViewById(R.id.imageView2);
+        final TextView textView = view.findViewById(R.id.textView);
 
         imageView.setOnClickListener(view1 -> {
             speak("Hello! I'm your tutor, Eve. Head over to the next lesson and take a step further in mastering the German language.");
 //                    animateModel(modelRenderable);
             imageView2.animate().alpha(1f).setDuration(2000);
+            textView.animate().alpha(1f).setDuration(2000);
         });
 
         return view;

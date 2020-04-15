@@ -454,3 +454,8 @@ sceneform.asset('sampledata/words/mask.obj',
         'default',
         'sampledata/words/mask.sfa',
         'src/main/assets/mask')
+
+sceneform.asset('sampledata/greetings/moon.obj',
+        'default',
+        'sampledata/greetings/moon.sfa',
+        'src/main/assets/moon')

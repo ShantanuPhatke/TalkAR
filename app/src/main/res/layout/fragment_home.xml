@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF"
+    android:background="#FFFFE0"
     tools:context=".HomeFragment">
 
 
@@ -33,6 +33,25 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.142"
         app:srcCompat="@drawable/bubble" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="199dp"
+        android:layout_height="156dp"
+        android:layout_marginStart="64dp"
+        android:text="Hello! I'm your tutor, Eve."
+        android:textAlignment="center"
+        android:padding="20dp"
+        android:fontFamily="sans-serif-black"
+        android:textSize="25dp"
+        android:alpha="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.608"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.142"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
