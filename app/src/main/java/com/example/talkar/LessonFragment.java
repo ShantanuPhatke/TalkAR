@@ -25,7 +25,7 @@ public class LessonFragment extends Fragment {
     private static final String sp_lesson_shape = "ShapesCompleted";
     private static final String sp_lesson_color = "ColorsCompleted";
     private static final String sp_lesson_word = "WordsCompleted";
-    private static final String sp_lesson_greeting = "GreetingCompleted";
+    private static final String sp_lesson_greeting = "GreetingsCompleted";
     private static final String sp_lesson_sentence = "SentencesCompleted";
     private static final String sp_lesson_quiz = "QuizCompleted";
     private int alphabetsCompleted, numbersCompleted, shapesCompleted, colorsCompleted, wordsCompleted, greetingsCompleted, sentencesCompleted, quizCompleted;
